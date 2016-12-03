@@ -1,0 +1,23 @@
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+  &:before, &:after
+    box-sizing border-box
+
+html, body
+  overflow hidden
+
+body
+  font-size 12px
+  line-height initial // reset react-mdl style
+  background-color: $colors.mainBackground
+
+html, body, div#root
+  display flex
+  flex-direction column
+  flex 1
+  min-height 100vh
+
+h4
+  margin gutter() 0 gutter()

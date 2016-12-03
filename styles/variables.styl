@@ -1,0 +1,84 @@
+_getHashValue(hashMap, key, defaultKey, type)
+  // Workaround global built-in function s()
+  // http://stylus-lang.com/docs/bifs.html#sfmt-
+  key = 's' if key is s
+
+  key = '' + key
+  if key in hashMap
+    return hashMap[key]
+  else
+    msg = 'There is no "%s()" for "%s". Using default %s ("%s").'
+    defaultKey = '' + defaultKey
+    warn('' + s(msg, type, key, type, defaultKey))
+    return hashMap[defaultKey]
+
+// -----------------------------------------------------------------------------
+//   Gutters
+// -----------------------------------------------------------------------------
+
+$gutters = {
+  xs :  4px  // Quarter font-size
+  s  :  8px  // Half font-size
+  m  : 12px  //------> Normal gutter (half-line)
+  l  : 16px  // Default font-size
+  xl : 24px  // Default line-height
+  xxl: 48px  // Two lines
+}
+gutter(key = m)
+  _getHashValue($gutters, key, m, 'gutter')
+
+// -----------------------------------------------------------------------------
+//   Font Sizes
+// -----------------------------------------------------------------------------
+
+$fontSizes = {
+  xs : 12px  // Small captions/Descriptions
+  s  : 14px  // Tooltips/Descriptions
+  m  : 16px  //------> Normal text
+  l  : 20px  // Heading
+  xl : 24px  // Section title
+  xxl: 30px  // Page title
+}
+font(key = m)
+  _getHashValue($fontSizes, key, m, 'font')
+
+// -----------------------------------------------------------------------------
+//   Line Heights
+// -----------------------------------------------------------------------------
+
+$lines = {
+  no : 1     // alias for xs ('no' is short for 'no line')
+  xs : 1     // No line-height, good for one-line stuff which needs to be v-centered
+  s  : 1.2   // Compact line-height, good for tooltips/descriptions
+  m  : 1.5   //------> Normal line-height which is good for reading
+  l  : 2
+  xl : 3
+  xxl: 4
+}
+line(key = m)
+  _getHashValue($lines, key, m, 'line')
+
+// -----------------------------------------------------------------------------
+//   Media
+// -----------------------------------------------------------------------------
+
+$mobile ?= 480px
+$tablet ?= 768px
+$desktop ?= 1024px
+$wide ?= 1300px
+
+// -----------------------------------------------------------------------------
+//   Fonts
+// -----------------------------------------------------------------------------
+
+$fontNormal = "Varela Round", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
+$fontHeading = "Montserrat", "Helvetica", "Roboto", "Arial", sans-serif
+
+
+$colors = {
+  mainBackground: #ededed
+  greyBackground: #f9f9f9
+  green: rgb(0,150,136)
+  greenLight: rgb(0,170,156)
+  blackText: rgba(0, 0, 0, 0.870588)
+}
