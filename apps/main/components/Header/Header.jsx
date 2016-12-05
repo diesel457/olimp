@@ -1,0 +1,31 @@
+import React, { Component, PropTypes } from 'react'
+// import LogoIcon from '../../../../public/img/icons/logo.svg'
+
+class Header extends Component {
+
+  static contextTypes = {
+    model: PropTypes.object
+  }
+
+  render () {
+    return (
+      <div className='Header'>
+        <a className='Header-logo' href='#'></a>
+        <div className='Header-nav'>
+          <nav>
+            <a href='#'>Главная</a>
+            <a href='#'>Номера</a>
+            <a href='#'>Контакты</a>
+        	</nav>
+          <div className='Header-info'>
+            <span>Севастополь, пос.Любимовка, ул. Южногородская,18</span>
+            <span>+7(978) 224-91-55</span>
+            <span>+7(978) 224-91-68</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Header

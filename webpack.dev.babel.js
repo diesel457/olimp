@@ -18,6 +18,7 @@ config.plugins = [
 ]
 
 config.module.loaders = [
+	{test: /\.svg$/,loaders: ['babel?presets[]=es2015&presets[]=stage-0&presets[]=react', 'react-svg?jsx=1'],exclude: /(node_modules)/},
   {include: /\.json$/, loaders: ['json']},
   {include: /\.js$/, loaders: ['babel'], exclude: /(node_modules)/},
   {include: /\.jsx$/, loaders: ['react-hot', 'babel', 'react-prefix'], exclude: /(node_modules)/},

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="22px" viewBox="0 0 18 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>food</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Main" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_3" transform="translate(-1359.000000, -737.000000)" fill="#242424">
+            <g id="services" transform="translate(720.000000, 672.000000)">
+                <g id="Group-2" transform="translate(0.000000, 40.000000)">
+                    <g id="food" transform="translate(639.000000, 25.000000)">
+                        <path d="M0,0 L0,7 C0,8.64497 1.3550302,10 3,10 L3,22 L5,22 L5,10 C6.64497,10 8,8.64497 8,7 L8,0 L6,0 L6,7 C6,7.56503 5.56503,8 5,8 L5,0 L3,0 L3,8 C2.4349698,8 2,7.56503 2,7 L2,0 L0,0 Z M12,0 L12,1 L12,22 L14,22 L14,14.625 L17.4375,12.90625 L18,12.625 L18,12 L18,5 C18,2.2504839 15.749516,0 13,0 L12,0 Z M14,2.40625 C15.113595,2.8427993 16,3.7233383 16,5 L16,11.375 L14,12.375 L14,2.40625 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

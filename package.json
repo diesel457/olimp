@@ -43,6 +43,7 @@
     "react-amelisa": "^0.1.0",
     "react-dom": "^15.3.x",
     "react-router": "^2.4.0",
+    "react-swipe": "^5.0.6",
     "serve-favicon": "^2.3.0",
     "setasap": "^2.0.0",
     "whatwg-fetch": "^1.0.0",
@@ -87,6 +88,7 @@
     "wdio-mocha-framework": "^0.3.4",
     "webdrivercss": "^1.1.10",
     "webpack": "^1.13.0",
+    "react-svg-loader": "2.0.0-alpha.0",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1"
   },

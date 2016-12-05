@@ -71,12 +71,32 @@ $wide ?= 1300px
 //   Fonts
 // -----------------------------------------------------------------------------
 
-$fontNormal = "Varela Round", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
-$fontHeading = "Montserrat", "Helvetica", "Roboto", "Arial", sans-serif
+@font-face
+  font-family 'AvenirHeavy'
+	src url('/fonts/AvenirNext-Heavy.ttf')
+	// font-family 'AvenirHeavy'
+	// src url('/fonts/AvenirNext-Heavy.eot')
+	// src url('/fonts/AvenirNext-Heavy.eot?#iefix') format('embedded-opentype')
+	// 	url('/fonts/AvenirNext-Heavy.woff') format('woff')
+	// 	url('/fonts/AvenirNext-Heavy.ttf') format('truetype')
+	// font-weight 900
+	// font-style normal
 
+@font-face
+  font-family: 'AvenirMedium'
+  src: url('/fonts/AvenirNext-Medium.ttf')
+
+@font-face
+  font-family: 'Oranienbaum'
+  src: url('/fonts/Oranienbaum-Regular.ttf')
+
+$AvenirMedium = "AvenirMedium", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
+$AvenirHeavy = "AvenirHeavy"
+$Oranienbaum = "Oranienbaum", "Helvetica", "Roboto", "Arial", sans-serif
 
 $colors = {
-  mainBackground: #ededed
+  mainBackground: #fff
+	black: #242424
   greyBackground: #f9f9f9
   green: rgb(0,150,136)
   greenLight: rgb(0,170,156)

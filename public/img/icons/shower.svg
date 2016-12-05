@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>shower</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Main" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_3" transform="translate(-1113.000000, -736.000000)" fill="#242424">
+            <g id="services" transform="translate(720.000000, 672.000000)">
+                <g id="Group-2" transform="translate(0.000000, 40.000000)">
+                    <g id="shower" transform="translate(393.000000, 24.000000)">
+                        <path d="M25,0 C22.790196,0 21,1.7901961 21,4 L19,4 L19,6 L25,6 L25,4 L23,4 C23,2.8098039 23.809804,2 25,2 C26.190196,2 27,2.8098039 27,4 L27,10 L0,10 L0,12 L1.1875,12 L2.71875,19.59375 L2.71875,19.625 C2.947703,20.655288 3.7155088,21.504759 4.71875,21.84375 L4,24 L6,24 L6.65625,22 L23.34375,22 L24,24 L26,24 L25.28125,21.84375 C26.327485,21.525317 27.139458,20.684937 27.375,19.625 L27.375,19.59375 L28.8125,12 L30,12 L30,10 L29,10 L29,4 C29,1.7901961 27.209804,0 25,0 Z M3.21875,12 L26.8125,12 L25.40625,19.21875 C25.289873,19.653018 24.921755,20 24.40625,20 L5.6875,20 C5.1541667,20 4.7888179,19.643431 4.6875,19.1875 L3.21875,12 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
