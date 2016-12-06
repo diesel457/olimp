@@ -1,2 +1,3 @@
-require('babel-core/register')
-require('./server/index.js')
+require('events').EventEmitter.prototype._maxListeners = 100
+console.log('Starting server...')
+require('./server/index.js')()

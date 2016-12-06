@@ -4,6 +4,7 @@
 
 # Xcode
 #
+.history
 build/
 public/upload
 public/img/sprites

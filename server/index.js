@@ -1,40 +1,44 @@
-import '../config'
-import http from 'http'
-import promisify from 'es6-promisify'
-import { Server as WebSocketServer } from 'ws'
-import store from './store'
+import express from 'express'
+import fs from 'fs'
+import shareDbServer from 'dm-sharedb-server'
+import mainRoutes from '../apps/main/Routes'
+// import ShareDB from 'sharedb'
+import derbyAr from 'derby-ar'
+import Racer from 'racer'
+// import ormEntities from '../model'
+// import api from './api'
 
-const port = process.env.PORT
+const ROOT_PATH = process.cwd()
+const TMP_PATH = ROOT_PATH + '/tmp'
+let getHead
 
-const nodeEnvToShow = [
-  'NODE_ENV',
-  'PORT',
-  'BASE_URL',
-  'MONGO_URL']
+// Init ORM
+Racer.use(derbyAr)
+// Racer.use(ormEntities)
 
-let prepareEnvDisplayObject = nodeEnvToShow.map(i => {
-  return {[i]: process.env[ i ]}
-})
+export default (done) => {
+  shareDbServer({
+    appRoutes: {
+      main: mainRoutes
+    },
+    beforeStart: beforeStart
+  }, (ee, options) => {
+    ee.on('middleware', (expressApp) => {
+      if (!fs.existsSync(TMP_PATH)) fs.mkdirSync(TMP_PATH)
+      expressApp.use('/tmp', express.static(TMP_PATH))
+    })
 
-async function init () {
-  await store.init()
+    ee.on('routes', (expressApp) => {
+      // expressApp.use(api)
+    })
 
-  let server = http.createServer()
-
-  let app = require('./app')
-
-  server.on('request', app)
-
-  console.log('----------------- ENV_VARIABLES ------------------- ')
-  console.log(prepareEnvDisplayObject)
-
-  let wsServer = new WebSocketServer({server})
-
-  wsServer.on('connection', store.onConnection)
-
-  await promisify(server.listen, server)(port)
-
-  console.info(`${process.pid} listening. Go to: http://localhost:${port}`)
+    ee.on('done', () => {
+      if (done != null) done()
+    })
+  })
 }
 
-export default init()
+function beforeStart (backend, cb) {
+  cb()
+}
+

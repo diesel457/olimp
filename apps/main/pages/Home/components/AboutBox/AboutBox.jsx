@@ -1,44 +1,41 @@
 import React, { Component, PropTypes } from 'react'
-import WifiIcon from './../../../../../../public/img/icons/wifi.svg'
-import TvIcon from './../../../../../../public/img/icons/tv.svg'
-import FridgeIcon from './../../../../../../public/img/icons/fridge.svg'
-import ShowerIcon from './../../../../../../public/img/icons/shower.svg'
-import SafeIcon from './../../../../../../public/img/icons/safe.svg'
-import FoodIcon from './../../../../../../public/img/icons/food.svg'
+import './AboutBox.styl'
+import WifiIcon from 'icons/wifi.svg'
+import TvIcon from 'icons/tv.svg'
+import FridgeIcon from 'icons/fridge.svg'
+import ShowerIcon from 'icons/shower.svg'
+import SafeIcon from 'icons/safe.svg'
+import FoodIcon from 'icons/food.svg'
 
 class AboutBox extends Component {
-
-  static contextTypes = {
-    model: PropTypes.object
-  }
 
   render () {
     return (
       <div className='AboutBox'>
-        <div className='AboutBox-inner'>
+        <div className='inner'>
           <h2>Доступно для каждого клиента, в каждом номере</h2>
-          <div className='AboutBox-items'>
-            <div className='AboutBox-item'>
+          <div className='items'>
+            <div className='item'>
               <WifiIcon width='26' height='19' />
               <span>Wi-Fi</span>
             </div>
-            <div className='AboutBox-item'>
+            <div className='item'>
               <TvIcon width='28' height='19' />
               <span>Телевизор</span>
             </div>
-            <div className='AboutBox-item'>
+            <div className='item'>
               <FridgeIcon width='18' height='25' />
               <span>Холодильник</span>
             </div>
-            <div className='AboutBox-item'>
+            <div className='item'>
               <ShowerIcon width='30' height='24' />
               <span>Санузел</span>
             </div>
-            <div className='AboutBox-item'>
+            <div className='item'>
               <SafeIcon width='25' height='21' />
               <span>Сейф</span>
             </div>
-            <div className='AboutBox-item'>
+            <div className='item'>
               <FoodIcon width='18' height='22' />
               <span>Питание</span>
             </div>

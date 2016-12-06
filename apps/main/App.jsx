@@ -2,39 +2,37 @@ import 'babel-polyfill'
 import Promise from 'promise-polyfill'
 window.Promise = Promise
 import React from 'react'
+import 'racer-highway/lib/browser/index.js'
+import derbyAr from 'derby-ar'
 import { render } from 'react-dom'
+import Racer from 'racer'
 import { Router, browserHistory } from 'react-router'
 import { setLoading } from 'react-amelisa'
-import { dbQueries } from 'amelisa-mongo'
-import { getModel } from 'amelisa'
 import Routes from './Routes'
 import Loading from 'project-components/Loading'
+import ormEntities from '~/model'
 setLoading(Loading)
 
-let model = getModel({
-  modelOptions: {dbQueries}
-})
-
-// try to enter 'model.get()' in dev console to see all data in model
-window.model = model
 
 function onUpdate () {
   window.scrollTo(0, 0)
 }
 
-// passing model to Root component
-function createElement (Component, props) {
-  return <Component {...props} model={model} />
+Racer.use(derbyAr)
+Racer.use(ormEntities)
+
+let createElement = (Component, props) => {
+  console.log('>> CHaNGE PATH', props.route.path, props)
+  return <Component key={props.route.path + JSON.stringify(props.routeParams)} {...props} />
 }
 
-// 'ready' means that connection with server has estabilished and data is synced
-// while offline, it means that data is read from client storage
-model.once('ready', () => {
-  render(
-    <Router history={browserHistory} onUpdate={onUpdate} createElement={createElement}>
-      {Routes}
-    </Router>
-  , document.getElementById('root'), () => {
-    // We don't need the static css any more once we have launched our application.
-  })
-})
+let router = (
+  <Router createElement={createElement} history={browserHistory} onUpdate={onUpdate}>
+    {Routes}
+  </Router>
+)
+
+let app = document.getElementById('app')
+// HACK: make react happy on overrighting server elements
+app.innerHTML = ''
+render(router, app)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, IndexRedirect } from 'react-router'
+import { Route, IndexRedirect, browserHistory } from 'react-router'
 import Root from './pages/Root'
 import HomePage from './pages/Home/Home'
 

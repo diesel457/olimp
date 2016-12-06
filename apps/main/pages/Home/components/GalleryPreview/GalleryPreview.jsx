@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import './GalleryPreview.styl'
 
 class GalleryPreview extends Component {
-
-  static contextTypes = {
-    model: PropTypes.object
-  }
 
   render () {
     return (
