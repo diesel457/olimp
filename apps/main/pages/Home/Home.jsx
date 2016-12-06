@@ -9,19 +9,6 @@ class Home extends Component {
     return (
       <div className='Home'>
         <Header />
-        <div className='_content'>
-
-          <div className='_row'>
-          <Slider />
-          <AboutBox />
-          </div>
-
-          <div className='_row'>
-          <GalleryPreview />
-          </div>
-
-        </div>
-        <Footer />
       </div>
     )
   }

@@ -5,18 +5,8 @@ import './Slider.styl'
 class Slider extends Component {
   render () {
     return (
-      <div className='Swiper'>
-        <ReactSwipe swipeOptions={{startSlide: 2}} onSwipeLeft={this.handleLeftSwipe}>
-          <div className='slide'>PANE 1</div>
-          <div className='slide'>PANE 2</div>
-          <div className='slide'>PANE 3</div>
-        </ReactSwipe>
-      </div>
+      <div className='Swiper'></div>
     )
-  }
-
-  handleLeftSwipe (e) {
-    console.log(e)
   }
 
 }
