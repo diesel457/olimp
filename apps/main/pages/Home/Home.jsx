@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { Footer } from './../../components'
-// import { Slider, AboutBox, GalleryPreview } from './components'
+import { Header } from './../../components'
+import { Slider, AboutBox, GalleryPreview, RoomList } from './components'
 
 class Home extends Component {
 
@@ -11,21 +11,20 @@ class Home extends Component {
   render () {
     return (
       <div className='Home'>
-
+        <Header />
         <div className='_content'>
 
           <div className='_row'>
-
-
+            <Slider />
+            <AboutBox />
           </div>
 
           <div className='_row'>
-
+            <GalleryPreview />
+            <RoomList />
           </div>
 
         </div>
-        <Footer />
-
       </div>
     )
   }

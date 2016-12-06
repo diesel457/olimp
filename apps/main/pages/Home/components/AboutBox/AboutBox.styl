@@ -1,22 +1,30 @@
 .AboutBox
-	display flex
-	flex-direction column
-	align-items flex-end
-	padding 85px 72px 75px
+  display flex
+  flex-direction column
+  align-items flex-end
+  padding 85px 72px 75px
 
-	&-inner
-		width 50%
+  h2
+    font-size 12px
+    line-height 1.2
+    font-family: $AvenirHeavy
+    color: $colors.black
 
-	&-items
-		display flex
-		justify-content space-between
-		margin-top 55px
+  &-inner
+    width 50%
 
-	&-item
-		display flex
-		flex-direction column
-		align-items center
-		&:first-child
-			margin-left 32px
-		& > span
-			margin-top 50px
+  &-items
+    display flex
+    justify-content space-between
+    margin-top 55px
+
+  &-item
+    display flex
+    flex-direction column
+    align-items center
+    min-height 80px
+    justify-content space-between
+    font-size 12px
+    color: $colors.grey
+    &:first-child
+      margin-left 32px

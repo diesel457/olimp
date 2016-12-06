@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import VKIcon from 'icons/stop.svg'
+// import VKIcon from 'icons/stop.svg'
 // import InstIcon from './../../../../public/img/icons/instagram.svg'
 // import FBIcon from './../../../../public/img/icons/fb.svg'
 
@@ -15,10 +15,7 @@ class Footer extends Component {
         <div className='Footer-col'>
           <h2>Акции и новости</h2>
           <div className='Footer-description'>Мы в социальных сетях</div>
-          <div className='Footer-widget'>
-            <a href='#'><VKIcon /></a>
-
-          </div>
+          <div className='Footer-widget'></div>
         </div>
         <div className='Footer-col'>
           <h2>Погода</h2>

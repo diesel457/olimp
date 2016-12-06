@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-// import LogoIcon from '../../../../public/img/icons/logo.svg'
 
 class Header extends Component {
 
@@ -10,7 +9,7 @@ class Header extends Component {
   render () {
     return (
       <div className='Header'>
-        <a className='Header-logo' href='#'></a>
+        <a className='Header-logo' href='#'>Логотип</a>
         <div className='Header-nav'>
           <nav>
             <a href='#'>Главная</a>
@@ -18,7 +17,7 @@ class Header extends Component {
             <a href='#'>Контакты</a>
         	</nav>
           <div className='Header-info'>
-            <span>Севастополь, пос.Любимовка, ул. Южногородская,18</span>
+            <span>Севастополь, пос. Любимовка, ул. Южногородская, 18</span>
             <span>+7(978) 224-91-55</span>
             <span>+7(978) 224-91-68</span>
           </div>

@@ -10,17 +10,10 @@ class Slider extends Component {
   render () {
     return (
       <div className='Swiper'>
-        <ReactSwipe swipeOptions={{startSlide: 2}} onSwipeLeft={this.handleLeftSwipe}>
-          <div className='Swiper-slide'>PANE 1</div>
-          <div className='Swiper-slide'>PANE 2</div>
-          <div className='Swiper-slide'>PANE 3</div>
-        </ReactSwipe>
+        <button className='Swiper-booking'>забронировать</button>
+        <img className='img' src='/img/firts-slide.jpg' />
       </div>
     )
-  }
-
-  handleLeftSwipe (e) {
-    console.log(e)
   }
 
 }

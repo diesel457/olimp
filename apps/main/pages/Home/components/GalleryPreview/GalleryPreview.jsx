@@ -9,7 +9,7 @@ class GalleryPreview extends Component {
   render () {
     return (
       <div className='GalleryPreview'>
-        
+        <a className='GalleryPreview-link' href='#'>Перейти в галлерею</a>
       </div>
     )
   }
