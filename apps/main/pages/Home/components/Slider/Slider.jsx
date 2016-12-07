@@ -1,11 +1,27 @@
 import React, { Component, PropTypes } from 'react'
-import ReactSwipe from 'react-swipe'
+import Carousel from 'nuka-carousel'
 import './Slider.styl'
 
 class Slider extends Component {
   render () {
+    mixins: [Carousel.ControllerMixin]
+
     return (
-      <div className='Swiper'></div>
+      <div className='Slider'>
+        <img src="/img/firts-slide.jpg"/>
+        {/* <Carousel>
+          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/firts-slide.jpg"/>
+        </Carousel> */}
+        <div className='Slider-animation'>
+          <div className='Slider-animation-circle'></div>
+          Листайте вниз
+        </div>
+      </div>
     )
   }
 

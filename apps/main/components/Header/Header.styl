@@ -1,0 +1,61 @@
+.Header
+	display flex
+	height 72px
+	color: $colors.black
+	font-family: $AvenirMedium
+	font-size 12px
+	font-weight bold
+	letter-spacing 2px
+
+	a
+		color: $colors.black
+
+	&-logo
+		background-color: $colors.black
+		width 72px
+		height @width
+
+		display flex
+		flex-shrink 0
+		align-items center
+		justify-content center
+		cursor pointer
+
+	&-nav
+		margin-left 7%
+		display flex
+		flex-shrink 0
+		a
+			display flex
+			justify-content center
+			align-items center
+			height 100%
+			position relative
+			margin-left 15%
+			&:first-child
+				margin-left 0
+			&:before
+				content: ''
+				height 4px
+				width 0
+				position absolute
+				left 0
+				bottom 0
+				background-color: $colors.black
+				transition .2s linear
+			&:hover
+				&:before
+					width 100%
+
+	&-info
+		flex 1
+		display flex
+		align-items center
+		justify-content flex-end
+		padding-right 72px
+		& > span
+			margin-right 1%
+			&:last-child
+				margin-right 0
+			&:first-child
+				margin-right 4%

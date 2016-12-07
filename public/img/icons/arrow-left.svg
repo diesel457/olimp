@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Main" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_3" transform="translate(-24.000000, -330.000000)">
+            <g id="cover" transform="translate(0.000000, 72.000000)">
+                <g id="arrow-left" transform="translate(24.000000, 252.000000)">
+                    <g>
+                        <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+                        <polygon fill="#FFFFFF" transform="translate(11.953125, 12.718750) scale(-1, 1) translate(-11.953125, -12.718750) " points="17.1875 6 15.78125 7.4375 20.0625 11.71875 0 11.71875 0 13.71875 20.0625 13.71875 15.78125 18 17.1875 19.4375 23.1875 13.4375 23.90625 12.71875 23.1875 12"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

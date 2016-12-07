@@ -1,0 +1,31 @@
+.AboutBox
+  display flex
+  justify-content flex-end
+  align-items center
+  min-height 292px
+
+  h2
+    font-family: $AvenirMedium
+    font-size 12px
+    font-weight bold
+    text-transform uppercase
+		letter-spacing 3px
+
+  &-inner
+    display flex
+    flex-direction column
+    width 50%
+
+  &-items
+    display flex
+    justify-content space-between
+    padding 52px 72px 0 32px
+
+  &-item
+    display flex
+    flex-direction column
+    height 82px
+    align-items center
+    justify-content space-between
+    & > span
+      color: $colors.grey
