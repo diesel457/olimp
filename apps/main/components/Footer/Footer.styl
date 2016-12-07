@@ -1,52 +1,59 @@
 .Footer
-	background-color: $colors.black
 	display flex
-	padding 76px 0 82px
+	justify-content space-between
+	padding 72px
+	background-color: $colors.black
+	color: $colors.white
+	letter-spacing 3px
 
 	h2
+		font-weight normal
 		font-size 20px
 
-.col
-	width 25%
-	display flex
-	flex-direction column
-	padding-left 7%
-	color: $colors.mainBackground
-
-.description
-	margin-top 26px
-	text-transform uppercase
-	font-size 10px
-
-.widget
-	margin-top 32px
-	a
-		margin-left 20px
-		&:first-child
-			margin-left 0
-
-.nav
-	display flex
-	flex-direction column
-	margin-top 38px
-	a
-		color: $colors.mainBackground
-		text-transform uppercase
+	&-item
 		display flex
-		position relative
-		padding-left 20px
-		margin-top 12px
-		&:first-child
-			margin-top 0
-		&:before
-			content: ''
-			width 4px
-			height 0
-			position absolute
-			left 0
-			top 0
-			background-color: $colors.mainBackground
-			transition .2s linear
-		&:hover
-			&:before
-				height 100%
+		flex-direction column
+		margin-top 25px
+
+		&-description
+			font-size 10px
+			text-transform uppercase
+			margin-top 25px
+
+		&-social
+			margin-top 32px
+			& > a + a
+				margin-left 22px
+
+		&-telephones
+			display flex
+			flex-direction column
+			margin-top 32px
+			& > span + span
+				margin-top 10px
+
+		&-nav
+			display flex
+			flex-direction column
+			text-transform uppercase
+			margin-top 32px
+			a
+				color: $colors.white
+				padding-left 20px
+				position relative
+				& + a
+					margin-top 10px
+				&:before
+					content: ''
+					width 4px
+					height 0
+					position absolute
+					left 0
+					top 0
+					background-color: $colors.white
+					transition .2s linear
+
+				&:hover
+				&.-active
+					&:before
+						height 100%
