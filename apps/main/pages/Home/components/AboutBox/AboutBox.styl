@@ -4,19 +4,25 @@
   align-items center
   min-height 292px
   position relative
+  flex-shrink 0
+  height 35%
 
 .spinner
   display flex
   flex-direction column
-  letter-spacing 3px
   color: $colors.black
-  max-width 30%
+  width 36%
+  max-width 672px
+  min-width 380px
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1)
   padding 36px
   background-color: $colors.white
   position absolute
   left 26px
   z-index 999
-	h2
+
+  h2
+    font-family: $Oranienbaum
     font-size 35px
 
 .description
@@ -33,13 +39,12 @@
 .inner
   display flex
   flex-direction column
-  width 50%
+  width 55%
   h2
     font-family: $AvenirMedium
     font-size 12px
     font-weight bold
     text-transform uppercase
-		letter-spacing 3px
 
 .items
   display flex

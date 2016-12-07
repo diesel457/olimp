@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Carousel from 'nuka-carousel'
+import SrollArrow from 'icons/scroll-icon.svg'
+import Decorators from './Decorators'
 import './Slider.styl'
 
 class Slider extends Component {
@@ -8,17 +10,18 @@ class Slider extends Component {
 
     return (
       <div className='Slider'>
-        <img src="/img/firts-slide.jpg"/>
-        {/* <Carousel>
+        <Carousel className='Slider-carousel' decorators={Decorators}>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
-        </Carousel> */}
+        </Carousel>
         <div className='Slider-animation'>
-          <div className='Slider-animation-circle'></div>
+          <div className='Slider-animation-circle'>
+            <SrollArrow className='Slider-animation-arrow' width='20' height='12'/>
+          </div>
           Листайте вниз
         </div>
       </div>

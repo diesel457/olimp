@@ -5,7 +5,15 @@
 	font-family: $AvenirMedium
 	font-size 12px
 	font-weight bold
-	letter-spacing 2px
+	text-transform uppercase
+	position fixed
+	top 0
+	left 0
+	width 100%
+	z-index 9999
+	background-color: $colors.white
+	&.-noFixed
+		position static
 
 	a
 		color: $colors.black

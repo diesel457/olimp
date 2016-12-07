@@ -12,7 +12,7 @@ class AboutBox extends Component {
   render () {
     return (
       <div className='AboutBox'>
-				<div className='AboutBox-spinner'>
+				<div id='spinner' className='AboutBox-spinner'>
           <h2>Гостевой дом «Олимп»</h2>
           <div className='AboutBox-description-first'>
             Гостевой дом «Олимп» расположен в самом центре
