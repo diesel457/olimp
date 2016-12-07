@@ -1,9 +1,39 @@
-.AboutBox
+.root
   display flex
   justify-content flex-end
   align-items center
   min-height 292px
+  position relative
 
+.spinner
+  display flex
+  flex-direction column
+  letter-spacing 3px
+  color: $colors.black
+  max-width 30%
+  padding 36px
+  background-color: $colors.white
+  position absolute
+  left 26px
+  z-index 999
+	h2
+    font-size 35px
+
+.description
+  &-first
+    margin-top 32px
+    font-size 16px
+
+  &-second
+    font-size 12px
+    color: $colors.grey
+    p
+      margin-top 26px
+
+.inner
+  display flex
+  flex-direction column
+  width 50%
   h2
     font-family: $AvenirMedium
     font-size 12px
@@ -11,21 +41,16 @@
     text-transform uppercase
 		letter-spacing 3px
 
-  &-inner
-    display flex
-    flex-direction column
-    width 50%
+.items
+  display flex
+  justify-content space-between
+  padding 52px 72px 0 32px
 
-  &-items
-    display flex
-    justify-content space-between
-    padding 52px 72px 0 32px
-
-  &-item
-    display flex
-    flex-direction column
-    height 82px
-    align-items center
-    justify-content space-between
-    & > span
-      color: $colors.grey
+.item
+  display flex
+  flex-direction column
+  height 82px
+  align-items center
+  justify-content space-between
+  & > span
+    color: $colors.grey
