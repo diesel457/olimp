@@ -6,6 +6,13 @@ import FBIcon from 'icons/fb.svg'
 
 class Footer extends Component {
 
+  componentDidMount() {
+    // let query = new YQL('select * from weather.forecast where (location = UPXX0022)');
+    // // query.exec(function (error, response) {
+    // //   console.log(response)
+    // // });
+  }
+
   render () {
     return (
       <footer className='Footer'>
@@ -21,7 +28,7 @@ class Footer extends Component {
 
         <div className='Footer-item'>
           <h2>Погода</h2>
-          <div className='Footer-item-description'>Севастополь, Любимовка</div>
+
         </div>
 
         <div className='Footer-item'>
@@ -35,7 +42,6 @@ class Footer extends Component {
 
         <div className='Footer-item'>
           <h2>Навигация по сайту</h2>
-          <div className='Footer-item-description'>Предзаказ, бронирование, трансфер</div>
           <nav className='Footer-item-nav'>
             <a href='#'>Главная</a>
             <a href='#'>Номера</a>

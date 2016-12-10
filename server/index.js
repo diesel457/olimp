@@ -6,7 +6,7 @@ import mainRoutes from '../apps/main/Routes'
 import derbyAr from 'derby-ar'
 import Racer from 'racer'
 // import ormEntities from '../model'
-// import api from './api'
+import api from './api'
 
 const ROOT_PATH = process.cwd()
 const TMP_PATH = ROOT_PATH + '/tmp'
@@ -29,7 +29,7 @@ export default (done) => {
     })
 
     ee.on('routes', (expressApp) => {
-      // expressApp.use(api)
+      expressApp.use(api)
     })
 
     ee.on('done', () => {
@@ -41,4 +41,3 @@ export default (done) => {
 function beforeStart (backend, cb) {
   cb()
 }
-
