@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import superagent from 'superagent'
 import './Popup.styl'
+import XMark from 'icons/xmark.svg'
+import LogoIcon from 'icons/logo.svg'
 
 class Popup extends Component {
 
@@ -17,12 +19,40 @@ class Popup extends Component {
   render () {
     let { isActive } = this.state
     return (
-      <div className='Popup' onClick={this._closePopup.bind(this)}>
-        <div className='Popup-xMark' onClick={this._closePopup.bind(this)}>×</div>
-        <div ref='inner' className={isActive ? 'Popup-inner -active' : 'Popup-inner'}>
-					<h2>Забронируйте номер.</h2>
+      <div className={isActive ? 'Popup -active' : 'Popup'}>
+        <div className='Popup-top'>
+          <div className='Popup-logo' width='40' height='35'><LogoIcon /></div>
+          <div className='Popup-title'>
+            <span>Бронирование номеров</span>
+          </div>
+          <div className='Popup-xMark' onClick={this._closePopup.bind(this)}>
+            <XMark width='16' height='16'/>
+          </div>
+        </div>
+        <div ref='inner' className='inner'>
           <div className='Popup-content'>
-            <div className='Popup-form-row'>
+            <div className='Popup-form'>
+              <div className='Popup-form-row'>
+                <label>Ваше имя</label>
+                <input type='text'/>
+              </div>
+
+              <div className='Popup-form-row'>
+                <label>Ваш телефон</label>
+                <input type='tel'/>
+              </div>
+
+              <div className='Popup-form-row'>
+                <label>Ваша электропочта</label>
+                <input type='tel'/>
+              </div>
+
+              <div className='Popup-form-row -clear'>
+                <button className='Popup-form-submit'>Забронировать</button>
+              </div>
+            </div>
+
+            {/* <div className='Popup-form-row'>
               <label>Фамилия</label>
               <input type='text' placeholder='Ваша фамилия'/>
             </div>
@@ -42,10 +72,10 @@ class Popup extends Component {
                 <option>3-x местный стандарт</option>
                 <option>Люкс</option>
               </select>
-            </div>
-            <div className='Popup-form-row'>
+            </div> */}
+            {/* <div className='Popup-form-row'>
               <button className='Popup-form-send' type='submit' onClick={this._sendEmail.bind(this)}>Отправить</button>
-            </div>
+            </div> */}
           </div>
 				</div>
       </div>
