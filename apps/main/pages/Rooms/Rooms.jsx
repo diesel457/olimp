@@ -7,8 +7,8 @@ class Rooms extends Component {
   render () {
     return (
       <div className='Rooms'>
-        <Header />
-        <Footer />
+        <Header path={this.props.route.path} />
+        <Footer path={this.props.route.path} />
       </div>
     )
   }

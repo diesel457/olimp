@@ -5,11 +5,13 @@ import Decorators from './Decorators'
 import './Slider.styl'
 
 class Slider extends Component {
+
   render () {
     mixins: [Carousel.ControllerMixin]
 
     return (
       <div className='Slider'>
+				<div className='Slider-booking' onClick={this.props.toggleState}>Забронировать</div>
         <Carousel className='Slider-carousel' decorators={Decorators}>
           <img src="/img/firts-slide.jpg"/>
           <img src="/img/firts-slide.jpg"/>
@@ -27,7 +29,6 @@ class Slider extends Component {
       </div>
     )
   }
-
 }
 
 export default Slider

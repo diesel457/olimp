@@ -1,19 +1,45 @@
 import React, { Component, PropTypes } from 'react'
+import superagent from 'superagent'
 import './Footer.styl'
 import VKIcon from 'icons/vk.svg'
 import InstIcon from 'icons/instagram.svg'
 import FBIcon from 'icons/fb.svg'
+import Cloudy_Weather from 'icons/cloudy_weather.svg'
 
 class Footer extends Component {
 
+  state = {
+    weather: null,
+    translatedConditions: [
+      "торнадо", "тропическая буря", "ураган", "сильные грозы",
+      "гроза", "дождь со снегом", "дождь со снегом", "дождь со снегом", "гололёд", "мелкий дождь",
+      "град", "ливень", "ливень", "снег с перерывами", "не значительный снег с ливнем", "метель", "снег",
+      "град", "дождь со снегом", "буря", "туман", "лёгкий туман", "густой туман", "сильный ветер", "ветер",
+      "холодно", "облачно", "ночью пасмурно", "днём пасмурно", "ночью переменная облачность",
+      "днём переменная облачность", "ясная ночь",, "солнечно", "ночью прояснения", "днём прояснения",
+      "дождь с градом", "жарко", "местами грозы", "в отдельных районах грозы", "в отдельных районах грозы",
+      "в отдельных районах ливни", "сильный снег", "в отдельных районах снег с пролевным дождём", "сильный снег",
+      "частиная облачность", "ливень с грозой", "ливень со снегом", "местами проливной дождь с грозой"
+    ]
+  }
+
   componentDidMount() {
-    // let query = new YQL('select * from weather.forecast where (location = UPXX0022)');
-    // // query.exec(function (error, response) {
-    // //   console.log(response)
-    // // });
+    setInterval(() => {
+      if(!this.state.weather){
+        this._getWeather()
+      }
+    }, 3000)
+
+    setInterval(() => {
+      this._getWeather()
+    }, 86400000)
+
   }
 
   render () {
+		let { path } = this.props
+    let { weather, translatedConditions } = this.state
+    console.log(weather)
     return (
       <footer className='Footer'>
         <div className='Footer-item'>
@@ -28,7 +54,15 @@ class Footer extends Component {
 
         <div className='Footer-item'>
           <h2>Погода</h2>
-
+          <div className='Footer-item-description'>Севастополь, Любимовка</div>
+          <div className='Footer-weather'>
+            <Cloudy_Weather />
+            <span className='Footer-weather-temp'>{weather && weather.temp || 0}</span>
+            <span className='Footer-weather-cel'>
+              °{weather && weather.unit || 'C'}
+              <span className='Footer-weather-cond'>{weather && translatedConditions[weather.code] || 'Погода не определена'}</span>
+            </span>
+          </div>
         </div>
 
         <div className='Footer-item'>
@@ -43,15 +77,29 @@ class Footer extends Component {
         <div className='Footer-item'>
           <h2>Навигация по сайту</h2>
           <nav className='Footer-item-nav'>
-            <a href='#'>Главная</a>
-            <a href='#'>Номера</a>
-            <a href='#'>Контакты</a>
+            <a href='/home' className={path === '/home' ? '-active' : ''}>Главная</a>
+            <a href='/rooms' className={path === '/rooms' ? '-active' : ''}>Номера</a>
+            <a href='/about' className={path === '/about' ? '-active' : ''}>Контакты</a>
           </nav>
         </div>
 
       </footer>
     )
   }
+
+  _getWeather () {
+    superagent
+      .post('/api/weather')
+      .send({ woeid: 20070189 })
+      .end((err, res) => {
+        if(res.body){
+          console.log(res.body)
+          let condition = res.body.channel.item.condition
+          this.setState({weather:{temp: condition.temp, code: condition.code, unit: res.body.channel.units.temperature}})
+        }
+      })
+  }
+
 }
 
 export default Footer

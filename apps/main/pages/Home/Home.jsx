@@ -1,27 +1,23 @@
 import React, { Component, PropTypes } from 'react'
-import { Footer, Header } from './../../components'
+import { Footer, Header, Popup } from './../../components'
 import './Home.styl'
 import { Slider, AboutBox, GalleryPreview, RoomList } from './components'
-import {model} from 'lib'
 
 class Home extends Component {
 
 	state = {
-		d: ''
-	}
-
-	componentDidMount (){
-		this.setState({d: 1})
+		isPopup: false
 	}
 
   render () {
-		let {d} = this.state
+		let { isPopup } = this.state
     return (
       <div className='Home'>
-        <Header />
+				{ isPopup && <Popup toggleState={this.toggleState} /> }
+        <Header path={this.props.route.path} />
 				<div className='_content'>
 					<div className='_row Home-slider'>
-						<Slider />
+						<Slider toggleState={this.toggleState}/>
 						<AboutBox />
 					</div>
 					<div id='second_box' className='_row'>
@@ -29,10 +25,14 @@ class Home extends Component {
 						<RoomList />
 					</div>
 				</div>
-				<Footer />
+				<Footer path={this.props.route.path} />
       </div>
     )
   }
+
+	toggleState = () => {
+		this.setState({isPopup: !this.state.isPopup})
+	}
 
 }
 

@@ -1,0 +1,61 @@
+.root
+	background-color: rgba($colors.black, 0.7)
+	position fixed
+	width 100%
+	height @width
+	z-index 9999
+
+	display flex
+	justify-content center
+	align-items center
+
+	h2
+		font-size 36px
+		font-family: $Oranienbaum
+		& + .content
+			margin-top 32px
+
+.inner
+	background-color: $colors.white
+	border-radius 6px
+	padding 36px
+	max-width 500px
+	width 100%
+	opacity 0
+	transition opacity 1s ease
+	&.-active
+		opacity 1
+
+.xMark
+	font-size 32px
+	position absolute
+	right 16px
+	top 16px
+	color: $colors.white
+	cursor pointer
+
+.content
+	display flex
+	flex-direction column
+
+.form
+	display flex
+	flex-direction column
+
+	&-row
+		display flex
+		flex-direction column
+		& + &
+			margin-top 16px
+		label
+			font-size 14px
+
+	&-send
+		border none
+		background-color: $colors.brown
+		color: $colors.white
+		text-transform uppercase
+		align-self flex-end
+		padding 8px
+		border-radius 4px
+		cursor pointer
