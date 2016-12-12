@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Footer, Header, Popup } from './../../components'
 import './Home.styl'
-import { Slider, AboutBox, GalleryPreview, RoomList } from './components'
+import { Slider, AboutBox, GalleryPreview, PreviewRoomList } from './components'
 
 class Home extends Component {
 
@@ -22,7 +22,7 @@ class Home extends Component {
 					</div>
 					<div id='second_box' className='_row'>
 						<GalleryPreview />
-						<RoomList />
+						<PreviewRoomList />
 					</div>
 				</div>
 				<Footer path={this.props.route.path} />
