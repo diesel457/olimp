@@ -98,8 +98,7 @@ _black = #000
 		height 68px
 		display flex
 		align-items center
-		& + &
-			margin-top 18px
+		margin-top 18px
 		&.-clear
 			background-color transparent
 			padding-left 0
@@ -114,3 +113,50 @@ _black = #000
 		width 100%
 		height 100%
 		border none
+		outline none
+		font-size 13px
+
+.Dropdown
+	width 100%
+	color: $colors.brown
+	font-family: $Oranienbaum
+	font-size 20px
+
+	&-selected
+		display flex
+		align-items center
+		color: $colors.white
+		cursor pointer
+		justify-content space-between
+		background-color _black
+		height 68px
+		padding-left 72px
+		padding-right 28px
+		svg
+			transform rotate(180deg)
+			transition .5s ease
+
+		.-open & svg
+			transform rotate(0)
+
+
+	&-content
+		max-height 0
+		overflow hidden
+
+		.-open &
+			max-height 100%
+			transition 1s ease
+
+	&-option
+		background-color _black
+		height 68px
+		display flex
+		align-items center
+		padding-left 72px
+		padding-right 28px
+		margin-top 2px
+		cursor pointer
+
+	&-input
+		display none

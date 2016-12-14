@@ -39,7 +39,7 @@ class Footer extends Component {
   render () {
 		let { path } = this.props
     let { weather, translatedConditions } = this.state
-    console.log(weather)
+
     return (
       <footer className='Footer'>
         <div className='Footer-item'>
@@ -93,7 +93,6 @@ class Footer extends Component {
       .send({ woeid: 20070189 })
       .end((err, res) => {
         if(res.body){
-          console.log(res.body)
           let condition = res.body.channel.item.condition
           this.setState({weather:{temp: condition.temp, code: condition.code, unit: res.body.channel.units.temperature}})
         }

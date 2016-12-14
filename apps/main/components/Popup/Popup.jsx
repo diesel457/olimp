@@ -3,6 +3,7 @@ import superagent from 'superagent'
 import './Popup.styl'
 import XMark from 'icons/xmark.svg'
 import LogoIcon from 'icons/logo.svg'
+import Dropdown from './Dropdown'
 
 class Popup extends Component {
 
@@ -32,50 +33,30 @@ class Popup extends Component {
         <div ref='inner' className='inner'>
           <div className='Popup-content'>
             <div className='Popup-form'>
-              <div className='Popup-form-row'>
-                <label>Ваше имя</label>
-                <input type='text'/>
+
+              <div className='Popup-form-dropdown'>
+                <Dropdown />
               </div>
 
               <div className='Popup-form-row'>
-                <label>Ваш телефон</label>
-                <input type='tel'/>
+                <label htmlFor='input1'>Ваше имя</label>
+                <input id='input1' type='text'/>
               </div>
 
               <div className='Popup-form-row'>
-                <label>Ваша электропочта</label>
-                <input type='tel'/>
+                <label htmlFor='input2'>Ваш телефон</label>
+                <input id='input2' type='tel'/>
+              </div>
+
+              <div className='Popup-form-row'>
+                <label htmlFor='input3'>Ваша электропочта</label>
+                <input id='input3' type='email'/>
               </div>
 
               <div className='Popup-form-row -clear'>
                 <button className='Popup-form-submit'>Забронировать</button>
               </div>
             </div>
-
-            {/* <div className='Popup-form-row'>
-              <label>Фамилия</label>
-              <input type='text' placeholder='Ваша фамилия'/>
-            </div>
-            <div className='Popup-form-row'>
-              <label>Имя</label>
-              <input type='text' placeholder='Ваше имя'/>
-            </div>
-            <div className='Popup-form-row'>
-              <label>Номер телефона</label>
-              <input type='tel' placeholder='Ваше номер телефона'/>
-            </div>
-            <div className='Popup-form-row'>
-              <label>Тип Номера</label>
-              <select>
-                <option>2-x местный эконом</option>
-                <option>2-x местный стандарт</option>
-                <option>3-x местный стандарт</option>
-                <option>Люкс</option>
-              </select>
-            </div> */}
-            {/* <div className='Popup-form-row'>
-              <button className='Popup-form-send' type='submit' onClick={this._sendEmail.bind(this)}>Отправить</button>
-            </div> */}
           </div>
 				</div>
       </div>
