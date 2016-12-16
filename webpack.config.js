@@ -31,7 +31,8 @@ module.exports = {
   stylus: {
     import: [
       path.resolve('./styles/variables.styl'),
-      path.resolve('./styles/index.styl')
+      path.resolve('./styles/index.styl'),
+			path.resolve('./styles/admin.styl')
     ]
   },
   webpackPort: process.env.DEVSERVER_PORT || 3010

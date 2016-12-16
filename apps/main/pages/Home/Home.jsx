@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Footer, Header, Popup } from './../../components'
 import './Home.styl'
-import { Slider, AboutBox, GalleryPreview, PreviewRoomList } from './components'
+import { Slider, AboutBox, GalleryPreview, PreviewRoomList, Booking } from './components'
 
 class Home extends Component {
 
@@ -13,7 +13,7 @@ class Home extends Component {
 		let { isPopup } = this.state
     return (
       <div className='Home'>
-				{ isPopup && <Popup toggleState={this.toggleState} /> }
+				{ isPopup && <Popup toggleState={this.toggleState} title='Бронирование номеров'><Booking /></Popup> }
         <Header path={this.props.route.path} />
 				<div className='_row Home-slider'>
 					<Slider toggleState={this.toggleState}/>

@@ -1,0 +1,40 @@
+import React, { Component, PropTypes } from 'react'
+import './Booking.styl'
+import Dropdown from './Dropdown'
+
+class Booking extends Component {
+
+  render () {
+    return (
+      <div className='Popup-content'>
+        <div className='Popup-form'>
+
+          <div className='Popup-form-dropdown'>
+            <Dropdown />
+          </div>
+
+          <div className='Popup-form-row'>
+            <label htmlFor='input1'>Ваше имя</label>
+            <input id='input1' type='text'/>
+          </div>
+
+          <div className='Popup-form-row'>
+            <label htmlFor='input2'>Ваш телефон</label>
+            <input id='input2' type='tel'/>
+          </div>
+
+          <div className='Popup-form-row'>
+            <label htmlFor='input3'>Ваша электропочта</label>
+            <input id='input3' type='email'/>
+          </div>
+
+          <div className='Popup-form-row -clear'>
+            <button className='Popup-form-submit'>Забронировать</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default Booking

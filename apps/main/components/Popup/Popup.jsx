@@ -3,7 +3,6 @@ import superagent from 'superagent'
 import './Popup.styl'
 import XMark from 'icons/xmark.svg'
 import LogoIcon from 'icons/logo.svg'
-import Dropdown from './Dropdown'
 
 class Popup extends Component {
 
@@ -12,6 +11,7 @@ class Popup extends Component {
   }
 
   componentDidMount (){
+    console.log(this)
     setTimeout( () =>{
       this.setState({isActive: true})
     }, 100)
@@ -24,40 +24,14 @@ class Popup extends Component {
         <div className='Popup-top'>
           <div className='Popup-logo' width='40' height='35'><LogoIcon /></div>
           <div className='Popup-title'>
-            <span>Бронирование номеров</span>
+            <span>{this.props.title}</span>
           </div>
           <div className='Popup-xMark' onClick={this._closePopup.bind(this)}>
             <XMark width='16' height='16'/>
           </div>
         </div>
         <div ref='inner' className='inner'>
-          <div className='Popup-content'>
-            <div className='Popup-form'>
-
-              <div className='Popup-form-dropdown'>
-                <Dropdown />
-              </div>
-
-              <div className='Popup-form-row'>
-                <label htmlFor='input1'>Ваше имя</label>
-                <input id='input1' type='text'/>
-              </div>
-
-              <div className='Popup-form-row'>
-                <label htmlFor='input2'>Ваш телефон</label>
-                <input id='input2' type='tel'/>
-              </div>
-
-              <div className='Popup-form-row'>
-                <label htmlFor='input3'>Ваша электропочта</label>
-                <input id='input3' type='email'/>
-              </div>
-
-              <div className='Popup-form-row -clear'>
-                <button className='Popup-form-submit'>Забронировать</button>
-              </div>
-            </div>
-          </div>
+          { this.props.children }
 				</div>
       </div>
     )
