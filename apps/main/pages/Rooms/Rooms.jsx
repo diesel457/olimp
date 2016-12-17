@@ -4,9 +4,9 @@ import { RoomList, AddRoom } from './components'
 import './Rooms.styl'
 import Subscribe from 'lib/Subscribe'
 
-Subscribe('toContentIds', 'fromContentIds', (props) => {
+@Subscribe((props) => {
   return {
-    template: ['templates', props.templateId],
+    cards: ['cards', {}]
   }
 })
 
@@ -18,14 +18,14 @@ class Rooms extends Component {
 
   render () {
     let { isPopup } = this.state
-
+    let {cards} = this.props
     return (
       <div className='Rooms'>
         { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom /></Popup> }
         <Header path={this.props.route.path} />
         <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>
 				<div className='_content'>
-					<RoomList />
+					<RoomList cards={cards}/>
 				</div>
         <Footer path={this.props.route.path} />
       </div>
