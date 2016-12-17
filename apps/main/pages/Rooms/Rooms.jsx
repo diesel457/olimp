@@ -2,6 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { Footer, Header, Popup } from './../../components'
 import { RoomList, AddRoom } from './components'
 import './Rooms.styl'
+import Subscribe from 'lib/Subscribe'
+
+Subscribe('toContentIds', 'fromContentIds', (props) => {
+  return {
+    template: ['templates', props.templateId],
+  }
+})
 
 class Rooms extends Component {
 

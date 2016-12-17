@@ -11,7 +11,6 @@ class Popup extends Component {
   }
 
   componentDidMount (){
-    console.log(this)
     setTimeout( () =>{
       this.setState({isActive: true})
     }, 100)
