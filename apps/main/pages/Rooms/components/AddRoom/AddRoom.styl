@@ -1,0 +1,84 @@
+_black = #000
+
+.root
+	display flex
+	justify-content center
+	width 100%
+
+.content
+	width 100%
+	max-width 720px
+	display flex
+	flex-direction column
+
+.form
+
+	label
+		color: $colors.white
+		font-size 20px
+		width 40%
+		font-family: $Oranienbaum
+		letter-spacing 1px
+		padding-right 1%
+
+	input
+		appearance none
+		border none
+		background-color transparent
+		outline none
+		font-size 16px
+		font-family: $AvenirMedium
+		color: $colors.white
+		width 60%
+		height 100%
+		&::-webkit-input-placeholder
+			color: $colors.white
+		&::-moz-placeholder
+			color: $colors.white
+		&:-ms-input-placeholder
+			color: $colors.white
+		&:-moz-placeholder
+			color: $colors.white
+
+	input[type=file]
+		max-height 30%
+
+	textarea
+		background-color transparent
+		resize none
+		outline none
+		min-height 200px
+		width 100%
+		color: $colors.white
+		font-size 16px
+		font-family: $AvenirMedium
+		border none
+		padding 5px 0
+
+	&-row
+		background-color _black
+		padding-left 72px
+		height 68px
+		display flex
+		align-items center
+		margin-top 18px
+		&.-clear
+			background-color transparent
+			padding-left 0
+		&.-textarea
+			height auto
+			align-items flex-start
+			padding-top 10px
+
+	&-submit
+		background-color: $colors.brown
+		color: $colors.white
+		font-family: $AvenirMedium
+		text-transform uppercase
+		letter-spacing 1px
+		cursor pointer
+		width 100%
+		height 100%
+		border none
+		outline none
+		font-size 13px
