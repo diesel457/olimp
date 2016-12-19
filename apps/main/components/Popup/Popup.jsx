@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import superagent from 'superagent'
 import './Popup.styl'
 import XMark from 'icons/xmark.svg'
 import LogoIcon from 'icons/logo.svg'
@@ -40,15 +39,6 @@ class Popup extends Component {
     if(e.target === this.refs.inner || e.target.closest('.Popup-content')){ return false }
     this.setState({isActive: false})
     this.props.toggleState()
-  }
-
-  _sendEmail () {
-    superagent
-      .post('/api/hello')
-      .send({ name: 'Manny', species: 'cat' })
-      .end((err, data) => {
-        console.log(err, data)
-      })
   }
 
 }

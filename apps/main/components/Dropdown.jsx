@@ -5,20 +5,36 @@ class Dropdown extends Component {
 
   state = {
     isOpened: false,
-    options: ['2-х местный эконом', '2-х местный стандарт', '3-х местный стандарт', 'Люкс']
+    options: [
+      {
+        value: '2simple',
+        option: '2-х местный эконом'
+      },
+      {
+        value: '2standart',
+        option: '2-х местный стандарт'
+      },
+      {
+        value: '3standart',
+        option: '3-х местный стандарт'
+      },
+      {
+        value: 'lux',
+        option: 'Люкс'
+      }
+    ]
   }
 
   render () {
     let {isOpened, options} = this.state
     let content = options.map((item, index) => {
-      return <div key={index} ref={'option-' + index} className='Dropdown-option' onClick={this._selectItem.bind(this, index)}>{item}</div>
+      return <div key={index} className='Dropdown-option' onClick={this._selectItem.bind(this, index)}>{item.option}</div>
     }) 
 
     return (
       <div className={isOpened ? 'Dropdown -open' : 'Dropdown'}>
         <div className='Dropdown-selected' onClick={this._toggleDrop.bind(this)}>
           <span ref='selected'>Выберите тип номера</span> <Arrow />
-          <input className='Dropdown-input' ref='input' type='text' />
         </div>
         <div className='Dropdown-content'>
           {content}
@@ -32,12 +48,13 @@ class Dropdown extends Component {
   }
 
   _selectItem = (index) => {
-    let { input, selected } = this.refs
-    let optinName = 'option-' + index
-    let _currentOption = this.refs[optinName]
 
-    selected.textContent = _currentOption.textContent
-    input.value = _currentOption.textContent
+    let { selected } = this.refs
+    let { options } = this.state
+    let _currentSelect = options[index]
+
+    selected.textContent = _currentSelect.option
+    this.props.change(_currentSelect.value)
 
     this._toggleDrop()
   }

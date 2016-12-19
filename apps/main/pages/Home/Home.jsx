@@ -10,7 +10,7 @@ class Home extends Component {
 	}
 
   render () {
-		let { isPopup } = this.state
+		let { isPopup, selectedValue } = this.state
     return (
       <div className='Home'>
 				{ isPopup && <Popup toggleState={this.toggleState} title='Бронирование номеров'><Booking /></Popup> }

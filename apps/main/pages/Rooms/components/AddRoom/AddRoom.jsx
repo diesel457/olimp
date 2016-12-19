@@ -8,7 +8,8 @@ import Dropdown from '../../../../components/Dropdown'
 class AddRoom extends Component {
   state = {
     progress: 0,
-    images: []
+    images: [],
+    selectedValue: null
   }
 
   componentWillUnmount () {
@@ -23,7 +24,7 @@ class AddRoom extends Component {
         <div className='AddRoom-content'>
           <div className='AddRoom-form'>
 
-            <Dropdown />
+            <Dropdown change={this._setSelectedValue}/>
 
             <div className='AddRoom-form-row'>
               <label htmlFor='input1'>Загрузить фотографию карточки комнаты</label>
@@ -87,16 +88,18 @@ class AddRoom extends Component {
   }
 
   _createCard () {
-		let {images} = this.state
+		let {images, selectedValue} = this.state
+    console.log(selectedValue)
     let {title, price, description} = this.refs
     let cardObject = {
+      type: selectedValue,
       images: images,
       title: title.value,
       price: price.value,
       description: description.value
     }
 
-    if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images){return}
+    if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images || !selectedValue){return}
 
     model.add('cards', cardObject, () => {
       window.location.pathname = '/rooms'
@@ -105,6 +108,10 @@ class AddRoom extends Component {
 
   _onProgress (e) {
     this.setState({progress: e.loaded / e.total * 100})
+  }
+
+	_setSelectedValue = (value) => {
+    this.setState({selectedValue: value})
   }
 
   _deleteImage = (index) => {

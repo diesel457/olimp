@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import './Booking.styl'
+import superagent from 'superagent'
 import Dropdown from '../../../../components/Dropdown'
 
 class Booking extends Component {
+
+  state = {
+    selectedValue: null
+  }
 
   render () {
     return (
@@ -10,7 +15,7 @@ class Booking extends Component {
         <div className='Booking-form'>
 
           <div className='Booking-form-dropdown'>
-            <Dropdown />
+            <Dropdown change={this._setSelectedValue}/>
           </div>
 
           <div className='Booking-form-row'>
@@ -29,11 +34,26 @@ class Booking extends Component {
           </div>
 
           <div className='Booking-form-row -clear'>
-            <button className='Booking-form-submit'>Забронировать</button>
+            <button className='Booking-form-submit' onClick={this._sendEmail.bind(this)}>Забронировать</button>
           </div>
         </div>
       </div>
     )
+  }
+
+  _setSelectedValue = (value) => {
+    this.setState({selectedValue: value})
+  }
+
+  _sendEmail () {
+    console.log(this.state.selectedValue)
+    // console.log(this.state)
+    // superagent
+    //   .post('/api/hello')
+    //   .send({ name: 'Manny', species: 'cat' })
+    //   .end((err, data) => {
+    //     console.log(err, data)
+    //   })
   }
 }
 
