@@ -3,10 +3,11 @@ import './AddRoom.styl'
 import model from 'lib/model'
 import superagent from 'superagent'
 import ImageList from './ImageList.jsx'
+import Dropdown from '../../../../components/Dropdown'
 
 class AddRoom extends Component {
   state = {
-    process: 0,
+    progress: 0,
     images: []
   }
 
@@ -15,19 +16,21 @@ class AddRoom extends Component {
   }
 
   render () {
-    let { process, images } = this.state
+    let { progress, images } = this.state
 
     return (
       <div className='AddRoom'>
         <div className='AddRoom-content'>
           <div className='AddRoom-form'>
 
+            <Dropdown />
+
             <div className='AddRoom-form-row'>
               <label htmlFor='input1'>Загрузить фотографию карточки комнаты</label>
               <input id='input1' type='file' ref='photo' onChange={this._uploadPhoto.bind(this)}/>
             </div>
 
-            {!!images.length && <ImageList images={images} deleteImg={this._deleteImage}/>}
+            {!!images.length && <ImageList images={images} deleteImg={this._deleteImage} progress={progress}/>}
 
   					<div className='AddRoom-form-row'>
               <label htmlFor='input2'>Заголовок карточки комнаты</label>
@@ -78,25 +81,30 @@ class AddRoom extends Component {
 
         // Should clear value for upload next image
         this.refs.photo.value = ''
+        this.setState({progress: 0})
       }
     }
   }
 
   _createCard () {
+		let {images} = this.state
     let {title, price, description} = this.refs
     let cardObject = {
+      images: images,
       title: title.value,
       price: price.value,
       description: description.value
     }
-    if(!cardObject.title || !cardObject.price || !cardObject.description){return}
-    model.add('cards', cardObject, () =>{
+
+    if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images){return}
+
+    model.add('cards', cardObject, () => {
       window.location.pathname = '/rooms'
     })
   }
 
   _onProgress (e) {
-    this.setState({process: e.loaded / e.total * 100})
+    this.setState({progress: e.loaded / e.total * 100})
   }
 
   _deleteImage = (index) => {

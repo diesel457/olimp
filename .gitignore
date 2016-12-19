@@ -6,7 +6,7 @@
 #
 .history
 build/
-public/upload
+public/uploaded
 public/img/sprites
 *.pbxuser
 !default.pbxuser

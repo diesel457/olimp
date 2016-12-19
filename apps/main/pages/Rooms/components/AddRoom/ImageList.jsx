@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 class ImageList extends Component {
   render () {
-    let {images} = this.props
+    let {images, progress} = this.props
     let imageList = images.map((item, index) => {return (
       <div className='AddRoom-imagePreview' key={index}>
         <img src={item.path} />
@@ -11,7 +11,10 @@ class ImageList extends Component {
     )})
 
 		return(
-      <div className='AddRoom-form-row'>{imageList}</div>
+      <div className='AddRoom-form-row -imagesList'>
+        <div className='AddRoom-imagePreviewList'>{imageList}</div>
+        <div className='AddRoom-progress'>{!!progress && progress + '%'}</div>
+      </div>
 		)
   }
 }

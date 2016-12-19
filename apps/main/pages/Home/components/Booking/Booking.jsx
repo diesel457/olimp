@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import './Booking.styl'
-import Dropdown from './Dropdown'
+import Dropdown from '../../../../components/Dropdown'
 
 class Booking extends Component {
 

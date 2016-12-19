@@ -11,9 +11,13 @@ _black = #000
 	display flex
 	flex-direction column
 
+.imagePreviewList
+	display flex
+
 .imagePreview
 	width 20%
 	height 70%
+	max-height 68px
 	display flex
 	overflow hidden
 	align-items flex-start
@@ -102,6 +106,10 @@ _black = #000
 			height auto
 			align-items flex-start
 			padding-top 10px
+		&.-imagesList
+			flex-direction column
+			padding 16px
+			height auto
 
 	&-submit
 		background-color: $colors.brown
@@ -115,3 +123,47 @@ _black = #000
 		border none
 		outline none
 		font-size 13px
+
+.Dropdown
+	width 100%
+	color: $colors.brown
+	font-family: $Oranienbaum
+	font-size 20px
+
+	&-selected
+		display flex
+		align-items center
+		color: $colors.white
+		cursor pointer
+		justify-content space-between
+		background-color _black
+		height 68px
+		padding-left 72px
+		padding-right 28px
+		svg
+			transform rotate(180deg)
+			transition .5s ease
+
+		.-open & svg
+			transform rotate(0)
+
+	&-content
+		max-height 0
+		overflow hidden
+
+		.-open &
+			max-height 100%
+			transition 1s ease
+
+	&-option
+		background-color _black
+		height 68px
+		display flex
+		align-items center
+		padding-left 72px
+		padding-right 28px
+		margin-top 2px
+		cursor pointer
+
+	&-input
+		display none
