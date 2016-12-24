@@ -56,11 +56,11 @@ class Footer extends Component {
           <h2>Погода</h2>
           <div className='Footer-item-description'>Севастополь, Любимовка</div>
           <div className='Footer-weather'>
-            <Cloudy_Weather />
-            <span className='Footer-weather-temp'>{weather && weather.temp || 0}</span>
+            {weather && <Cloudy_Weather />}
+            <span className='Footer-weather-temp'>{weather && weather.temp}</span>
             <span className='Footer-weather-cel'>
-              °{weather && weather.unit || 'C'}
-              <span className='Footer-weather-cond'>{weather && translatedConditions[weather.code] || 'Погода не определена'}</span>
+              {weather && '°' + weather.unit}
+              <span className='Footer-weather-cond'>{weather && translatedConditions[weather.code] || 'Получаем метеоданные ...'}</span>
             </span>
           </div>
         </div>

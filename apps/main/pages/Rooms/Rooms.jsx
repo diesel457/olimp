@@ -18,7 +18,7 @@ class Rooms extends Component {
 
   render () {
     let { isPopup } = this.state
-    let {cards} = this.props
+    let { cards } = this.props
     return (
       <div className='Rooms'>
         { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom /></Popup> }

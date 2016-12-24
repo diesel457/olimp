@@ -89,7 +89,6 @@ class AddRoom extends Component {
 
   _createCard () {
 		let {images, selectedValue} = this.state
-    console.log(selectedValue)
     let {title, price, description} = this.refs
     let cardObject = {
       type: selectedValue,

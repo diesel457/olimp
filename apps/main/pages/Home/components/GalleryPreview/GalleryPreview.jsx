@@ -7,7 +7,7 @@ class GalleryPreview extends Component {
   render () {
     return (
       <div className='GalleryPreview'>
-        <a className='GalleryPreview-link' href='#'>
+        <a className='GalleryPreview-link' href='/rooms'>
           Перейти в галлерею
           <GalleryIcon className='GalleryPreview-link-icon' width='28' height='22'/>
         </a>

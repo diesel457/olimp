@@ -34,13 +34,25 @@ class Dropdown extends Component {
     return (
       <div className={isOpened ? 'Dropdown -open' : 'Dropdown'}>
         <div className='Dropdown-selected' onClick={this._toggleDrop.bind(this)}>
-          <span ref='selected'>Выберите тип номера</span> <Arrow />
+          <span ref='selected'>{'Выберите тип номера'}</span> <Arrow />
         </div>
         <div className='Dropdown-content'>
           {content}
         </div>
       </div>
     )
+  }
+
+  _getCurrentIndex (value) {
+    let {options} = this.state
+    let _currentIndex = 0
+    for(let i=0; i < options.length; i++){
+      if(options[i].value === value){
+        _currentIndex = i;
+        break;
+      }
+    }
+    return _currentIndex;
   }
 
   _toggleDrop () {
