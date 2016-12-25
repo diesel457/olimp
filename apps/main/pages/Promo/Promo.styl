@@ -1,0 +1,28 @@
+.root
+	display flex
+	justify-content center
+
+	form > div
+		display flex
+		align-items center
+		margin-top 16px
+		&:last-child
+			justify-content flex-end
+
+		label
+			min-width 76px
+
+		input
+			border: 1px solid $colors.black
+			border-radius 6px
+			min-width 256px
+			min-height 25px
+			padding 5px
+			outline none
+			cursor pointer
+
+		input[type=submit]
+			background: $colors.brown
+			color: $colors.white
+			border none
+			max-width 56px

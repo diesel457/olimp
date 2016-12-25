@@ -4,24 +4,53 @@ import YQL from 'yqlp'
 import multiparty from 'multiparty'
 import fs from 'fs'
 import path from 'path'
+import passport from 'passport'
+import bcrypt from 'bcrypt-nodejs'
 
 const router = express.Router()
-// const dataCollections = [
-//   'projects',
-//   'folders',
-//   'categories',
-//   'framingQuestions',
-//   'questions',
-//   'users',
-//   'checklists',
-//   'usersCategories',
-//   'checklists',
-//   'answers',
-//   'comments',
-//   'reviews',
-//   'financialStatements',
-//   'reviewNotes'
-// ]
+const loginOptions = {
+  successRedirect: '/',
+  failureRedirect: '/aleksandra007',
+  failureFlash: true
+}
+
+router.post(`/api/login`,
+  passport.authenticate('local-signup', loginOptions)
+);
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+router.get(`/api/create-admin`, wrap(async (req, res, next) => {
+  let { model } = req
+	let { username = 'admin', password = 'admin' } = req.body
+  let $auths = model.query('auths', {admin: true})
+
+  model.fetch($auths, () => {
+    let admin = $auths.get()[0]
+
+    if(!admin) {
+
+      let adminFields = {
+        admin: true,
+        username: username,
+        password: bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+      }
+
+      model.add('auths', adminFields, function(){
+        return res.send('Successfull.')
+      });
+
+    }else{
+      return res.send('Admin user is created.')
+    }
+
+  });
+
+}));
+
 
 router.post(`/api/hello`, wrap(async (req, res, next) => {
   let data = {
@@ -74,13 +103,13 @@ router.post(`/api/upload-photo`, wrap(async (req, res, next) => {
 
 }));
 
-router.post(`/api/delete-img`, wrap(async (req, res, next) => {
+router.post(`/api/delete-photo`, wrap(async (req, res, next) => {
   let {images} = req.body
 
   images.forEach((item) => {
     fs.unlinkSync('public' + item.path)
   })
-  
+
   res.send(true)
 }));
 

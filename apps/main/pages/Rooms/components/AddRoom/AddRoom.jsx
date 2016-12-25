@@ -118,7 +118,7 @@ class AddRoom extends Component {
       images: index ? [this.state.images[index]] : this.state.images
     }
     superagent
-      .post('/api/delete-img')
+      .post('/api/delete-photo')
       .send(data)
       .end((err, res) => {
         let splicedArray = this.state.images
