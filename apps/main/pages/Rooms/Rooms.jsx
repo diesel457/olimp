@@ -3,6 +3,7 @@ import { Footer, Header, Popup } from './../../components'
 import { RoomList, AddRoom } from './components'
 import './Rooms.styl'
 import Subscribe from 'lib/Subscribe'
+import { model } from 'lib'
 
 @Subscribe((props) => {
   return {
@@ -11,19 +12,22 @@ import Subscribe from 'lib/Subscribe'
 })
 
 class Rooms extends Component {
-
-  state = {
-    isPopup: false
+  constructor (props){
+    super()
+    this.state = {
+      isPopup: false,
+      isAdmin: model.collections._session.data.isAdmin || false
+    }
   }
 
   render () {
-    let { isPopup } = this.state
+    let { isPopup, isAdmin } = this.state
     let { cards } = this.props
     return (
       <div className='Rooms'>
         { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom /></Popup> }
         <Header path={this.props.route.path} />
-        <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>
+        {isAdmin && <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>}
 				<div className='_content'>
 					<RoomList cards={cards}/>
 				</div>

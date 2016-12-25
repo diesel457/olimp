@@ -23,7 +23,7 @@ class Room extends Component {
         <div className='Room-left'>
 					<img src={data.images[activeImage].path} />
           <div className='Room-imagesList'>
-            {images}
+            {images.length > 1 && images}
           </div>
 				</div>
         <div className='Room-right'>

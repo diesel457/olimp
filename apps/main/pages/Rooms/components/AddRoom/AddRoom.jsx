@@ -98,7 +98,7 @@ class AddRoom extends Component {
       description: description.value
     }
 
-    if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images || !selectedValue){return}
+    if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images || !selectedValue || !cardObject.images.length){return}
 
     model.add('cards', cardObject, () => {
       window.location.pathname = '/rooms'
