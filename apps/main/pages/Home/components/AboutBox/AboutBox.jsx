@@ -6,40 +6,38 @@ import FridgeIcon from 'icons/fridge.svg'
 import ShowerIcon from 'icons/shower.svg'
 import SafeIcon from 'icons/safe.svg'
 import FoodIcon from 'icons/food.svg'
+import Subscribe from 'lib/Subscribe'
+
+@Subscribe((props) => {
+  return {
+    homeAd: ['homeAd', {}]
+  }
+})
 
 class AboutBox extends Component {
 
+  state = {
+    isEdit: false
+  }
+
   render () {
+    let {isEdit} = this.state
+    let homeAd = this.props.homeAd[0]
+    let paragraphs = homeAd.paragraphs || []
+    let content = paragraphs.map((p, index) => {
+      return(<p key={index}>{p}</p>)
+    })
+
     return (
       <div className='AboutBox'>
 				<div id='spinner' className='AboutBox-spinner'>
-          <h2>Гостевой дом «Олимп»</h2>
-          <div className='AboutBox-description-first'>
-            Гостевой дом «Олимп» расположен в самом центре
-            курортного поселка Любимовка, на берегу Черного моря,
-            в 2-х минутах ходьбы от большого широкого
-            песчано-галечного пляжа.
-            За 15-20 минут общественным транспортом можно
-            добраться до исторического центра города Севастополя.
+          <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit</a>
+          <h2 ref='title'>{homeAd.title}</h2>
+          <div className='AboutBox-description-first' ref='descriptionFirst'>{homeAd.subTitle}</div>
+          <div className='AboutBox-description-second' ref='descriptionSecond'>
+            {content}
           </div>
-          <div className='AboutBox-description-second'>
-            <p>
-              Гостевой дом представляет собой отдельно стоящее 4-х этажное
-              здание, расположенное на закрытой и круглосуточно охраняемой
-              территории с зоной отдыха. Год постройки 2016.
-            </p>
-            <p>
-              К Вашим услугам круглосуточная стойка регистрации, внимательный
-              персонал предоставит Вам всю необходимую информацию,
-              а так же поможет с организацией трансфера и заказом экскурсий
-              по всему Крымскому побережью.
-            </p>
-            <p>
-              Бронирование номера в нашем гостевом доме станет отличным
-              выбором для спокойного размеренного семейного отдыха в дали
-              от забот и суеты!
-            </p>
-          </div>
+          {isEdit && <button className='AboutBox-save' onClick={this._saveChanges.bind(this, homeAd.id)}>Сохранить</button>}
         </div>
         <div className='AboutBox-inner'>
           <h2>Доступно для каждого клиента, в каждом номере</h2>
@@ -72,6 +70,50 @@ class AboutBox extends Component {
         </div>
       </div>
     )
+  }
+
+  _getEdit () {
+    this.setState({isEdit: true})
+    let {title, descriptionFirst, descriptionSecond} = this.refs
+    let tags = descriptionSecond.querySelectorAll('p')
+    title.setAttribute('contenteditable', true)
+    descriptionFirst.setAttribute('contenteditable', true)
+
+    for(let i = 0; i < tags.length; i++){
+      tags[i].setAttribute('contenteditable', true)
+    }
+
+    title.focus()
+  }
+
+  _endEdit (){
+    for(key in this.refs){
+      let el = this.refs[key]
+      console.log(el)
+      el.setAttribute('contenteditable', false)
+    }
+  }
+
+  _saveChanges (homeAdId = false) {
+    let {title, descriptionFirst, descriptionSecond} = this.refs
+    let tags = descriptionSecond.querySelectorAll('p')
+    let paragraphs = []
+
+    for(let i = 0; i < tags.length; i++){
+      paragraphs.push(tags[i].textContent)
+    }
+
+    let homeAdNewFields = {
+      title: title.textContent,
+      subTitle: descriptionFirst.textContent,
+      paragraphs: paragraphs
+    }
+    if(!homeAdId) return
+
+    model.set(`homeAd.${homeAdId}`, homeAdNewFields, () => {
+      this.setState({isEdit: false})
+      this._endEdit()
+    })
   }
 
 }
