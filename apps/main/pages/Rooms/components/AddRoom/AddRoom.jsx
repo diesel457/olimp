@@ -11,12 +11,12 @@ class AddRoom extends Component {
     super()
     this.state = {
       progress: 0,
-      images: props.data.images || [],
-      cardId: props.data.id || false,
-      selectedValue: props.data.type || null,
-      title: props.data.title || '',
-      description: props.data.description || '',
-      price: props.data.price || ''
+      images: props.data && props.data.images || [],
+      cardId: props.data && props.data.id || false,
+      selectedValue: props.data && props.data.type || null,
+      title: props.data && props.data.title || '',
+      description: props.data && props.data.description || '',
+      price: props.data && props.data.price || ''
     }
 	}
 
