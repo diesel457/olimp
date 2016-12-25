@@ -6,56 +6,82 @@ import ImageList from './ImageList.jsx'
 import Dropdown from '../../../../components/Dropdown'
 
 class AddRoom extends Component {
-  state = {
-    progress: 0,
-    images: [],
-    selectedValue: null
-  }
 
-  componentWillUnmount () {
-    this._deleteImage()
+	constructor(props) {
+    super()
+    this.state = {
+      progress: 0,
+      images: props.data.images || [],
+      cardId: props.data.id || false,
+      selectedValue: props.data.type || null,
+      title: props.data.title || '',
+      description: props.data.description || '',
+      price: props.data.price || ''
+    }
+	}
+
+  componentWillUnmount() {
+    let {cardId} = this.state
+    let existCard = model.get(`cards.${cardId}`)
+    if(!existCard) this._deleteImage()
   }
 
   render () {
-    let { progress, images } = this.state
-
+    let { progress, images, title, price, description, cardId, selectedValue } = this.state
     return (
       <div className='AddRoom'>
         <div className='AddRoom-content'>
           <div className='AddRoom-form'>
 
-            <Dropdown change={this._setSelectedValue}/>
+            <Dropdown change={this._setSelectedValue} currentIndex={selectedValue}/>
 
             <div className='AddRoom-form-row'>
               <label htmlFor='input1'>Загрузить фотографию карточки комнаты</label>
-              <input id='input1' type='file' ref='photo' onChange={this._uploadPhoto.bind(this)}/>
+              <input id='input1' type='file' ref='photo'
+                onChange={this._uploadPhoto.bind(this)}
+                disabled={images.length >= 5 && 'disabled'}/>
             </div>
 
             {!!images.length && <ImageList images={images} deleteImg={this._deleteImage} progress={progress}/>}
 
   					<div className='AddRoom-form-row'>
               <label htmlFor='input2'>Заголовок карточки комнаты</label>
-              <input id='input2' type='text' ref='title'/>
+              <input id='input2' type='text' ref='title'
+                onChange={this._changeTitle} value={title}/>
             </div>
 
             <div className='AddRoom-form-row'>
               <label htmlFor='input3'>Прайс карточки комнаты</label>
-              <input id='input3' type='number' ref='price'/>
+              <input id='input3' type='number' ref='price'
+                onChange={this._changePrice} value={price}/>
             </div>
 
             <div className='AddRoom-form-row -textarea'>
               <label htmlFor='input4'>Описание карточки комнаты</label>
-              <textarea id='input4' ref='description'></textarea>
+              <textarea id='input4' ref='description'
+                onChange={this._changeDescription} value={description}></textarea>
             </div>
 
 						<div className='AddRoom-form-row -clear'>
-	            <button className='AddRoom-form-submit' onClick={this._createCard.bind(this)}>Создать</button>
+	            <button className='AddRoom-form-submit' onClick={this._createCard.bind(this, cardId)}>{this.props.submit}</button>
 	          </div>
 
   				</div>
         </div>
       </div>
     )
+  }
+
+  _changeTitle = (e) => {
+    this.setState({title: e.target.value})
+  }
+
+  _changePrice = (e) => {
+    this.setState({price: e.target.value})
+  }
+
+  _changeDescription = (e) => {
+    this.setState({description: e.target.value})
   }
 
   _uploadPhoto () {
@@ -87,7 +113,7 @@ class AddRoom extends Component {
     }
   }
 
-  _createCard () {
+  _createCard (cardId) {
 		let {images, selectedValue} = this.state
     let {title, price, description} = this.refs
     let cardObject = {
@@ -99,10 +125,16 @@ class AddRoom extends Component {
     }
 
     if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images || !selectedValue || !cardObject.images.length){return}
-
-    model.add('cards', cardObject, () => {
-      window.location.pathname = '/rooms'
-    })
+    console.log(cardId)
+    if(cardId){
+      model.set(`cards.${cardId}`, cardObject, () => {
+        window.location.pathname = '/rooms'
+      })
+    }else{
+      model.add('cards', cardObject, () => {
+        window.location.pathname = '/rooms'
+      })
+    }
   }
 
   _onProgress (e) {

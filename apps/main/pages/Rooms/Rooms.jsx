@@ -25,7 +25,7 @@ class Rooms extends Component {
     let { cards } = this.props
     return (
       <div className='Rooms'>
-        { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom /></Popup> }
+        { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom submit='Создать карточку' /></Popup> }
         <Header path={this.props.route.path} />
         {isAdmin && <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>}
 				<div className='_content'>

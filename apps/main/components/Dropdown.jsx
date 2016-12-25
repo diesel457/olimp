@@ -5,6 +5,7 @@ class Dropdown extends Component {
 
   state = {
     isOpened: false,
+    currentValueName: '',
     options: [
       {
         value: '2simple',
@@ -25,8 +26,13 @@ class Dropdown extends Component {
     ]
   }
 
+  componentDidMount () {
+    this._getCurrentName(this.props.currentIndex)
+  }
+
   render () {
-    let {isOpened, options} = this.state
+    let {isOpened, options, currentValueName} = this.state
+		let {currentIndex} = this.props
     let content = options.map((item, index) => {
       return <div key={index} className='Dropdown-option' onClick={this._selectItem.bind(this, index)}>{item.option}</div>
     }) 
@@ -34,7 +40,7 @@ class Dropdown extends Component {
     return (
       <div className={isOpened ? 'Dropdown -open' : 'Dropdown'}>
         <div className='Dropdown-selected' onClick={this._toggleDrop.bind(this)}>
-          <span ref='selected'>{'Выберите тип номера'}</span> <Arrow />
+          <span ref='selected'>{currentValueName || 'Выберите тип номера'}</span> <Arrow />
         </div>
         <div className='Dropdown-content'>
           {content}
@@ -43,20 +49,23 @@ class Dropdown extends Component {
     )
   }
 
-  _getCurrentIndex (value) {
-    let {options} = this.state
-    let _currentIndex = 0
-    for(let i=0; i < options.length; i++){
-      if(options[i].value === value){
-        _currentIndex = i;
+  _toggleDrop () {
+    this.setState({isOpened: !this.state.isOpened})
+  }
+
+  _getCurrentName (type) {
+    let options = this.state.options
+    let currentValueName = ''
+
+    for(let i = 0; i < options.length; i++){
+      let item = options[i]
+      if(item.value === type){
+        currentValueName = item.option
         break;
       }
     }
-    return _currentIndex;
-  }
 
-  _toggleDrop () {
-    this.setState({isOpened: !this.state.isOpened})
+    this.setState({currentValueName: currentValueName})
   }
 
   _selectItem = (index) => {
