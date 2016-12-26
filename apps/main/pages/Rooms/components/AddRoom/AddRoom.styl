@@ -57,7 +57,9 @@ _black = #000
 		letter-spacing 1px
 		padding-right 1%
 
-	input
+	input[type=text]
+	input[type=file]
+	input[type=number]
 		appearance none
 		border none
 		background-color transparent
@@ -78,6 +80,10 @@ _black = #000
 
 	input[type=file]
 		max-height 30%
+
+	input[type=checkbox]
+		width 12px
+		height @width
 
 	textarea
 		background-color transparent

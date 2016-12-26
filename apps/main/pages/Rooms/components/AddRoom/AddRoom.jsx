@@ -16,7 +16,8 @@ class AddRoom extends Component {
       selectedValue: props.data && props.data.type || null,
       title: props.data && props.data.title || '',
       description: props.data && props.data.description || '',
-      price: props.data && props.data.price || ''
+      price: props.data && props.data.price || '',
+      showHome: props.data && props.data.toHome || false
     }
 	}
 
@@ -27,7 +28,7 @@ class AddRoom extends Component {
   }
 
   render () {
-    let { progress, images, title, price, description, cardId, selectedValue } = this.state
+    let { progress, images, title, price, description, cardId, selectedValue, showHome } = this.state
     return (
       <div className='AddRoom'>
         <div className='AddRoom-content'>
@@ -48,6 +49,12 @@ class AddRoom extends Component {
               <label htmlFor='input2'>Заголовок карточки комнаты</label>
               <input id='input2' type='text' ref='title'
                 onChange={this._changeTitle} value={title}/>
+            </div>
+
+						<div className='AddRoom-form-row'>
+              <label htmlFor='input5'>Показать карточку на главной странице</label>
+              <input id='input5' type='checkbox' ref='homeCheck'
+                onChange={this._changeShowToHome} value={showHome}/>
             </div>
 
             <div className='AddRoom-form-row'>
@@ -115,17 +122,22 @@ class AddRoom extends Component {
 
   _createCard (cardId) {
 		let {images, selectedValue} = this.state
-    let {title, price, description} = this.refs
+    let {title, price, description, homeCheck} = this.refs
     let cardObject = {
       type: selectedValue,
       images: images,
       title: title.value,
       price: price.value,
-      description: description.value
+      description: description.value,
+      showHome: homeCheck.checked || false
+    }
+    console.log(homeCheck.checked)
+    if(homeCheck.checked){
+      cardObject['toHome'] = true
     }
 
     if(!cardObject.title || !cardObject.price || !cardObject.description || !cardObject.images || !selectedValue || !cardObject.images.length){return}
-    console.log(cardId)
+
     if(cardId){
       model.set(`cards.${cardId}`, cardObject, () => {
         window.location.pathname = '/rooms'

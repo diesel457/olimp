@@ -33,7 +33,7 @@ class Room extends Component {
           <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit</a>
           <div className='Room-title'>{data.title}</div>
           <div className='Room-description'>{data.description}</div>
-          <div className='Room-price'>{data.price} руб/сутки</div>
+          <div className='Room-price'>{data.price} руб./сутки</div>
           <button className='Room-btn' onClick={this._toggleState.bind(this)}>Забронировать</button>
         </div>
       </div>
