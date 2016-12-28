@@ -3,6 +3,7 @@ import './Room.styl'
 import Popup from '../../../../components/Popup'
 import BookingRoom from '../BookingRoom'
 import AddRoom from '../AddRoom'
+import { model } from 'lib'
 
 class Room extends Component {
 
@@ -30,7 +31,7 @@ class Room extends Component {
           </div>
 				</div>
         <div className='Room-right'>
-          <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit</a>
+          {model.get('_session.isAdmin') && <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit</a>}
           <div className='Room-title'>{data.title}</div>
           <div className='Room-description'>{data.description}</div>
           <div className='Room-price'>{data.price} руб./сутки</div>

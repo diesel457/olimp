@@ -10,6 +10,7 @@ class AddRoom extends Component {
 	constructor(props) {
     super()
     this.state = {
+      maxCards: false,
       progress: 0,
       images: props.data && props.data.images || [],
       cardId: props.data && props.data.id || false,
@@ -21,6 +22,19 @@ class AddRoom extends Component {
     }
 	}
 
+  componentDidMount() {
+    let cards = model.get(`cards`)
+    let homeCards = []
+    for(let cardId in cards){
+      let card = cards[cardId]
+      if(card.toHome) homeCards.push(true)
+    }
+
+    if(homeCards.length > 4){
+      this.setState({maxCards: true})
+    }
+  }
+
   componentWillUnmount() {
     let {cardId} = this.state
     let existCard = model.get(`cards.${cardId}`)
@@ -28,7 +42,7 @@ class AddRoom extends Component {
   }
 
   render () {
-    let { progress, images, title, price, description, cardId, selectedValue, showHome } = this.state
+    let { progress, images=[], title, price, description, cardId, selectedValue, showHome, maxCards } = this.state
     return (
       <div className='AddRoom'>
         <div className='AddRoom-content'>
@@ -54,7 +68,7 @@ class AddRoom extends Component {
 						<div className='AddRoom-form-row'>
               <label htmlFor='input5'>Показать карточку на главной странице</label>
               <input id='input5' type='checkbox' ref='homeCheck'
-                onChange={this._changeShowToHome} value={showHome}/>
+                onChange={this._changeShowToHome} disabled={maxCards && 'disabled'} checked={showHome}/>
             </div>
 
             <div className='AddRoom-form-row'>

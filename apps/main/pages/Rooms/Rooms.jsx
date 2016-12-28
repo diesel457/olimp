@@ -16,7 +16,7 @@ class Rooms extends Component {
     super()
     this.state = {
       isPopup: false,
-      isAdmin: model.collections._session.data.isAdmin || false
+      isAdmin: model.get('_session.isAdmin') || false
     }
   }
 

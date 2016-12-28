@@ -6,7 +6,8 @@ import Subscribe from 'lib/Subscribe'
 
 @Subscribe((props) => {
   return {
-    cards: ['cards', {toHome: true}]
+    cards: ['cards', {toHome: true}],
+		homeAd: ['homeAd', {}]
   }
 })
 
@@ -18,14 +19,14 @@ class Home extends Component {
 
   render () {
 		let { isPopup, selectedValue } = this.state
-		let { cards } = this.props
+		let { cards, homeAd } = this.props
     return (
       <div className='Home'>
 				{ isPopup && <Popup toggleState={this.toggleState} title='Бронирование номеров'><Booking /></Popup> }
         <Header path={this.props.route.path} />
 				<div className='_row Home-slider'>
 					<Slider toggleState={this.toggleState}/>
-					<AboutBox />
+					<AboutBox homeAd={homeAd}/>
 				</div>
 				<div id='second_box' className='_row'>
 					<GalleryPreview />

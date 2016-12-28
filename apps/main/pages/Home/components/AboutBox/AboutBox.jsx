@@ -7,22 +7,21 @@ import ShowerIcon from 'icons/shower.svg'
 import SafeIcon from 'icons/safe.svg'
 import FoodIcon from 'icons/food.svg'
 import Subscribe from 'lib/Subscribe'
-
-@Subscribe((props) => {
-  return {
-    homeAd: ['homeAd', {}]
-  }
-})
+import { model } from 'lib'
 
 class AboutBox extends Component {
+  constructor(props){
+    super()
+    this.state = {
+      isEdit: false,
+      isAdmin: model.get('_session.isAdmin') || false,
+      homeAd: props.homeAd[0] || {}
+    }
 
-  state = {
-    isEdit: false
   }
 
   render () {
-    let {isEdit} = this.state
-    let homeAd = this.props.homeAd[0]
+    let {isEdit, isAdmin, homeAd} = this.state
     let paragraphs = homeAd.paragraphs || []
     let content = paragraphs.map((p, index) => {
       return(<p key={index}>{p}</p>)
@@ -31,7 +30,7 @@ class AboutBox extends Component {
     return (
       <div className='AboutBox'>
 				<div id='spinner' className='AboutBox-spinner'>
-          <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit</a>
+          {isAdmin && <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit</a>}
           <h2 ref='title'>{homeAd.title}</h2>
           <div className='AboutBox-description-first' ref='descriptionFirst'>{homeAd.subTitle}</div>
           <div className='AboutBox-description-second' ref='descriptionSecond'>
