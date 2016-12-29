@@ -9,20 +9,27 @@ import FoodIcon from 'icons/food.svg'
 import Subscribe from 'lib/Subscribe'
 import { model } from 'lib'
 
+@Subscribe((props) => {
+  return {
+		homeAd: ['homeAd', {}]
+  }
+})
+
 class AboutBox extends Component {
   constructor(props){
     super()
     this.state = {
       isEdit: false,
-      isAdmin: model.get('_session.isAdmin') || false,
-      homeAd: props.homeAd[0] || {}
+      isAdmin: model.get('_session.isAdmin') || false
     }
 
   }
 
   render () {
-    let {isEdit, isAdmin, homeAd} = this.state
-    let paragraphs = homeAd.paragraphs || []
+    let {isEdit, isAdmin} = this.state
+    let { homeAd } = this.props
+    let ad = homeAd[0]
+    let paragraphs = ad.paragraphs || []
     let content = paragraphs.map((p, index) => {
       return(<p key={index}>{p}</p>)
     })
@@ -31,12 +38,12 @@ class AboutBox extends Component {
       <div className='AboutBox'>
 				<div id='spinner' className='AboutBox-spinner'>
           {isAdmin && <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit</a>}
-          <h2 ref='title'>{homeAd.title}</h2>
-          <div className='AboutBox-description-first' ref='descriptionFirst'>{homeAd.subTitle}</div>
+          <h2 ref='title'>{ad.title}</h2>
+          <div className='AboutBox-description-first' ref='descriptionFirst'>{ad.subTitle}</div>
           <div className='AboutBox-description-second' ref='descriptionSecond'>
             {content}
           </div>
-          {isEdit && <button className='AboutBox-save' onClick={this._saveChanges.bind(this, homeAd.id)}>Сохранить</button>}
+          {isEdit && <button className='AboutBox-save' onClick={this._saveChanges.bind(this, ad.id)}>Сохранить</button>}
         </div>
         <div className='AboutBox-inner'>
           <h2>Доступно для каждого клиента, в каждом номере</h2>

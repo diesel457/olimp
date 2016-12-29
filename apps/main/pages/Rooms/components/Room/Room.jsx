@@ -21,8 +21,8 @@ class Room extends Component {
     });
 
     return (
-      <div className='Room'>
-        { isPopup && <Popup title='Забронировать номер' toggleState={this.toggleState}><BookingRoom data={data} /></Popup> }
+      <div id={data.id} className='Room'>
+        { isPopup && <Popup title='Забронировать номер' toggleState={this._toggleState}><BookingRoom data={data} /></Popup> }
         { isEdit && <Popup title='Изменить карточку номера' toggleState={this._editCard}><AddRoom data={data} submit='Обновить карточку' /></Popup> }
         <div className='Room-left'>
 					<img src={data.images[activeImage].path} />

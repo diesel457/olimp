@@ -32,13 +32,14 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback : true
 },
 function(req, username, password, done){
+	console.log(password)
   let {model} = req
   let $admin = model.query('auths', {username: username, admin: true})
   model.fetch($admin, function(){
     let admin = $admin.get()[0]
+    if(!admin) return done(null, false)
     let validPass = bcrypt.compareSync(password, admin.password)
-
-    if(!admin || !validPass) return done(null, false)
+    if(!validPass) return done(null, false)
 
     return done(null, {username, password})
   })
