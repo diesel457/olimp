@@ -1,80 +1,81 @@
 .root
-	display flex
-	height 72px
-	color: $colors.black
-	font-family: $AvenirMedium
-	font-size 12px
-	font-weight bold
-	text-transform uppercase
-	width 100%
-	background-color: $colors.white
-	box-shadow 0 4px 8px 0 rgba(#000, 0.2)
-	position fixed
-	top 0
-	left 0
-	z-index 9999
+  display flex
+  height 72px
+  color: $colors.black
+  font-family: $AvenirMedium
+  font-size 12px
+  font-weight bold
+  text-transform uppercase
+  width 100%
+  background-color: $colors.white
+  box-shadow 0 4px 8px 0 rgba(#000, 0.2)
+  position fixed
+  top 0
+  left 0
+  z-index 9999
 
-	a
-		color: $colors.black
+  a
+    color: $colors.black
 
 .logo
-	background-color: $colors.black
-	width 72px
-	height @width
-	line-height 100%
+  background-color: $colors.black
+  width 72px
+  height @width
+  line-height 100%
 
-	display flex
-	flex-shrink 0
-	align-items center
-	justify-content center
-	cursor pointer
-	font-family: $Oranienbaum
-	font-size 22px
-	color: $colors.white!important
-	transition .2s linear
-	overflow hidden
-	svg
-		margin-right 8px
-	&:hover
-		max-width: 100%
-		padding 0 16px
+  display flex
+  flex-shrink 0
+  align-items center
+  justify-content center
+  cursor pointer
+  font-family: $Oranienbaum
+  font-size 22px
+  color: $colors.white!important
+  transition .2s linear
+  overflow hidden
+  svg
+    margin-right 8px
+  &:hover
+    max-width: 100%
+    padding 0 16px
 
 .nav
-	margin-left 7%
-	display flex
-	flex-shrink 0
-	a
-		display flex
-		justify-content center
-		align-items center
-		height 100%
-		position relative
-		margin-left 15%
-		&:first-child
-			margin-left 0
-		&:before
-			content: ''
-			height 4px
-			width 0
-			position absolute
-			left 0
-			bottom 0
-			background-color: $colors.black
-			transition .2s linear
-		&:hover
-		&.-active
-			&:before
-				width 100%
+  margin-left 7%
+  display flex
+  flex-shrink 0
+  a
+    display flex
+    justify-content center
+    align-items center
+    height 100%
+    position relative
+    margin-left 15%
+    &:first-child
+      margin-left 0
+    &:before
+      content: ''
+      height 4px
+      width 0
+      position absolute
+      left 0
+      bottom 0
+      background-color: $colors.black
+      transition .2s linear
+    &:hover
+    &.-active
+      &:before
+        width 100%
+        
+  @media (max-width: $tablet)
+    flex 1
+    a
+      margin-left 16px
 
 .info
-	flex 1
-	display flex
-	align-items center
-	justify-content flex-end
-	padding-right 72px
-	& > span
-		margin-right 1%
-		&:last-child
-			margin-right 0
-		&:first-child
-			margin-right 4%
+  flex 1
+  display flex
+  align-items center
+  justify-content flex-end
+  padding-right 72px
+  @media (max-width: $tablet)
+    display none

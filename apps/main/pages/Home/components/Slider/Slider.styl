@@ -10,6 +10,8 @@
 	position relative
 	height 65%
 	overflow hidden
+	@media (max-width: $tablet)
+		height auto
 
 	img
 		width 100%
@@ -20,6 +22,10 @@
 		height 100%!important
 		div
 			max-height 100%!important
+		@media (max-width: $tablet)
+			height auto!important
+			div
+				max-height auto!important
 
 .booking
 	background-color: $colors.brown
@@ -50,7 +56,6 @@
 		top 50%
 		left 50%
 		margin -6px 0 0 -8px
-
 
 .animation
 	font-size 12px

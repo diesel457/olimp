@@ -74,7 +74,7 @@ class Footer extends Component {
           </div>
         </div>
 
-        <div className='Footer-item'>
+        <div className='Footer-item -noMobile'>
           <h2>Навигация по сайту</h2>
           <nav className='Footer-item-nav'>
             <a href='/home' className={path === '/home' ? '-active' : ''}>Главная</a>

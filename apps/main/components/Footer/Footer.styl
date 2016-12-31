@@ -1,73 +1,81 @@
 .root
-	display flex
-	justify-content space-between
-	padding 72px
-	margin-top 72px
-	background-color: $colors.black
-	color: $colors.white
+  display flex
+  justify-content space-between
+  padding 72px
+  margin-top 72px
+  background-color: $colors.black
+  color: $colors.white
+  @media (max-width: $tablet)
+    flex-direction column
+    padding 16px 10px
 
-	h2
-		font-weight normal
-		font-size 20px
+  h2
+    font-weight normal
+    font-size 20px
 
 .weather
-	display flex
-	margin-top 32px
+  display flex
+  margin-top 32px
 
-	&-temp
-		font-size 20px
-		font-family: $Oranienbaum
-		margin-left 24px
+  &-temp
+    font-size 20px
+    font-family: $Oranienbaum
+    margin-left 24px
 
-	&-cond
-		font-size 10px
-		text-transform uppercase
-		margin-left 8px
+  &-cond
+    font-size 10px
+    text-transform uppercase
+    margin-left 8px
 
 .item
-	display flex
-	flex-direction column
-	margin-top 25px
+  display flex
+  flex-direction column
+  margin-top 25px
 
-	&-description
-		font-size 10px
-		text-transform uppercase
-		margin-top 25px
+  @media (max-width: $tablet)
+    width 100%
+    &.-noMobile
+      display none
 
-	&-social
-		margin-top 32px
-		& > a + a
-			margin-left 22px
+  &-description
+    font-size 10px
+    text-transform uppercase
+    margin-top 25px
 
-	&-telephones
-		display flex
-		flex-direction column
-		margin-top 32px
-		& > span + span
-			margin-top 10px
+  &-social
+    margin-top 32px
+    & > a + a
+      margin-left 22px
 
-	&-nav
-		display flex
-		flex-direction column
-		text-transform uppercase
-		margin-top 32px
-		a
-			color: $colors.white
-			padding-left 20px
-			position relative
-			& + a
-				margin-top 10px
-			&:before
-				content: ''
-				width 4px
-				height 0
-				position absolute
-				left 0
-				top 0
-				background-color: $colors.white
-				transition .2s linear
+  &-telephones
+    display flex
+    flex-direction column
+    margin-top 32px
+    & > span + span
+      margin-top 10px
 
-			&:hover
-			&.-active
-				&:before
-					height 100%
+  &-nav
+    display flex
+    flex-direction column
+    text-transform uppercase
+    margin-top 32px
+    a
+      color: $colors.white
+      padding-left 20px
+      position relative
+      & + &
+        margin-top 10px
+      &:before
+        content: ''
+        width 4px
+        height 0
+        position absolute
+        left 0
+        top 0
+        background-color: $colors.white
+        transition .2s linear
+
+      &:hover
+      &.-active
+        &:before
+          height 100%
