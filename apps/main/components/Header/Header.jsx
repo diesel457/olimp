@@ -6,12 +6,13 @@ class Header extends Component {
 
   render () {
     let { path } = this.props
+		console.log(path)
     return (
       <div className='Header'>
         <a className='Header-logo' href='/home'><LogoIcon width='40' height='35' /></a>
         <nav className='Header-nav'>
           <a href='/home' className={path === '/home' ? '-active' : ''}>Главная</a>
-          <a href='/rooms' className={path === '/rooms' ? '-active' : ''}>Номера</a>
+          <a href='/rooms' className={path === '/rooms' || path === '/rooms/:roomId' ? '-active' : ''}>Номера</a>
           <a href='/about' className={path === '/about' ? '-active' : ''}>Контакты</a>
         </nav>
         <div className='Header-info'>

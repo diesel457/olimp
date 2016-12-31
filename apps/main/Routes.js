@@ -9,7 +9,8 @@ let Routes = (
   <Route path='/' component={Root}>
     <IndexRedirect to='home' />
     <Route path='/home' component={HomePage} />
-		<Route path='/rooms' component={RoomsPage} />
+    <Route path='/rooms' component={RoomsPage} />
+		<Route path='/rooms/:roomId' component={RoomsPage} />
 		<Route path='/aleksandra007' component={PromoPage} />
   </Route>
 )

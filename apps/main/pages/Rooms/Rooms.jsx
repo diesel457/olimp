@@ -29,7 +29,7 @@ class Rooms extends Component {
         <Header path={this.props.route.path} />
         {isAdmin && <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>}
 				<div className='_content'>
-					<RoomList cards={cards}/>
+					<RoomList cards={cards} roomId={this.props.params.roomId}/>
 				</div>
         <Footer path={this.props.route.path} />
       </div>

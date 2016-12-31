@@ -16,7 +16,7 @@ class PreviewRoomList extends Component {
       let {id, images = [], title, price, description} = card
 			return(
         <div key={index} className='PreviewRoomList-item'>
-          <a className='PreviewRoomList-item-goToRooms' href={'/rooms#' + id}></a>
+          <a className='PreviewRoomList-item-goToRooms' href={'/rooms/' + id}></a>
           <img className='PreviewRoomList-item-img' src={images[0].path} />
           <div className='PreviewRoomList-item-bottom'>
             <div className='PreviewRoomList-item-name'>{title}</div>
