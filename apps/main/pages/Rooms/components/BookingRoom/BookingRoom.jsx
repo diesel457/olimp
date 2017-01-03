@@ -37,7 +37,7 @@ class BookingRoom extends Component {
             <input id='input3' type='email' />
           </div>
 
-          <div className='AddRoom-form-row -textarea'>
+          <div className='BookingRoom-form-row -textarea'>
             <label htmlFor='input4'>Ваши пожелания</label>
             <textarea id='input4' ref='description'></textarea>
           </div>

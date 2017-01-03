@@ -20,7 +20,7 @@ _black = #000
 		resize none
 		outline none
 		min-height 200px
-		width 100%
+		width 60%
 		color: $colors.white
 		font-size 16px
 		font-family: $AvenirMedium
@@ -54,6 +54,12 @@ _black = #000
 		display flex
 		align-items center
 		margin-top 18px
+		@media (max-width: $tablet)
+			padding-left 16px
+		&.-textarea
+			height auto
+			align-items flex-start
+			padding-top 10px
 		&.-clear
 			background-color transparent
 			padding-left 0
