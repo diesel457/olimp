@@ -6,7 +6,6 @@ class Header extends Component {
 
   render () {
     let { path } = this.props
-		console.log(path)
     return (
       <div className='Header'>
         <a className='Header-logo' href='/home'><LogoIcon width='40' height='35' /></a>
