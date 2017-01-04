@@ -15,13 +15,15 @@ class Home extends Component {
       <div className='Home'>
 				{ isPopup && <Popup toggleState={this.toggleState} title='Бронирование номеров'><Booking /></Popup> }
         <Header path={this.props.route.path} />
-				<div className='_row Home-slider'>
-					<Slider toggleState={this.toggleState}/>
-					<AboutBox />
-				</div>
-				<div id='second_box' className='_row'>
-					<GalleryPreview />
-					<PreviewRoomList />
+				<div className='Content'>
+					<div className='_row Home-slider'>
+						<Slider toggleState={this.toggleState}/>
+						<AboutBox />
+					</div>
+					<div id='second_box' className='_row'>
+						<GalleryPreview />
+						<PreviewRoomList />
+					</div>
 				</div>
 				<Footer path={this.props.route.path} />
       </div>
@@ -29,7 +31,7 @@ class Home extends Component {
   }
 
 	toggleState = () => {
-		this.setState({isPopup: !this.state.isPopup})
+    this.setState({isPopup: !this.state.isPopup})
 	}
 
 }

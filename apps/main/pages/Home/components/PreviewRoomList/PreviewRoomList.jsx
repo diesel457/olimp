@@ -11,7 +11,7 @@ import Subscribe from 'lib/Subscribe'
 class PreviewRoomList extends Component {
 
   render () {
-    let {cards} = this.props
+    let {cards = []} = this.props
     let content = cards.map((card, index) => {
       let {id, images = [], title, price, description} = card
 			return(
@@ -26,8 +26,9 @@ class PreviewRoomList extends Component {
         </div>
       )
 		});
+
     return (
-      <div className='PreviewRoomList'>{content}</div>
+      <div className={cards.length ? 'PreviewRoomList' : 'PreviewRoomList-hide'}>{content}</div>
     )
   }
 
