@@ -20,7 +20,7 @@ class PreviewRoomList extends Component {
           <img className='PreviewRoomList-item-img' src={images[0].path} />
           <div className='PreviewRoomList-item-bottom'>
             <div className='PreviewRoomList-item-name'>{title}</div>
-            <div className='PreviewRoomList-item-description'>{this._replaceString(description)}...</div>
+            <div className='PreviewRoomList-item-description'>{this._replaceString(description)}</div>
             <div className='PreviewRoomList-item-price'>{price} руб./сутки</div>
           </div>
         </div>
@@ -33,7 +33,11 @@ class PreviewRoomList extends Component {
   }
 
 	_replaceString (string = '') {
-    return string.slice(0, 200)
+    if(string.length < 200){
+      return string
+    }else{
+      return string.slice(0, 200) + '...'
+    }
 	}
 
 }

@@ -23,12 +23,13 @@ class Rooms extends Component {
   render () {
     let { isPopup, isAdmin } = this.state
     let { cards } = this.props
+
     return (
       <div className='Rooms'>
         { isPopup && <Popup toggleState={this.toggleState} title='Создать карточку номера'><AddRoom submit='Создать карточку' /></Popup> }
         <Header path={this.props.route.path} />
-        {isAdmin && <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>}
 				<div className='Content'>
+          {isAdmin && <a className='Admin-btn' onClick={this.toggleState}>Добавить комнату</a>}
 					<RoomList cards={cards} roomId={this.props.params.roomId}/>
 				</div>
         <Footer path={this.props.route.path} />

@@ -105,6 +105,10 @@ class AddRoom extends Component {
     this.setState({description: e.target.value})
   }
 
+	_changeShowToHome = (e) => {
+		this.setState({showHome: e.target.checked})
+	}
+
   _uploadPhoto () {
     let file = this.refs.photo.files[0]
     let formData = new FormData()

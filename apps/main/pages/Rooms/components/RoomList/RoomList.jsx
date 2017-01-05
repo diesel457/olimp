@@ -6,7 +6,9 @@ class RoomList extends Component {
 
 	componentDidMount () {
     let roomId = this.props.roomId
-    this._scrollToRoom(roomId)
+    process.nextTick(()=>{
+      this._scrollToRoom(roomId)
+    })
 	}
 
   render () {

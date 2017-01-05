@@ -13,12 +13,13 @@ class Slider extends Component {
       <div className='Slider'>
 				<div className='Slider-booking' onClick={this.props.toggleState}>Забронировать</div>
         <Carousel className='Slider-carousel' decorators={Decorators}>
-          <img src="/img/firts-slide.jpg"/>
-          <img src="/img/firts-slide.jpg"/>
-          <img src="/img/firts-slide.jpg"/>
-          <img src="/img/firts-slide.jpg"/>
-          <img src="/img/firts-slide.jpg"/>
-          <img src="/img/firts-slide.jpg"/>
+          <img src="/img/image-1.png"/>
+          <img src="/img/image-2.png"/>
+          <img src="/img/image-3.png"/>
+          <img src="/img/image-4.png"/>
+          <img src="/img/image-5.png"/>
+          <img src="/img/image-6.png"/>
+					<img src="/img/image-7.png"/>
         </Carousel>
         <div className='Slider-animation'>
           <div className='Slider-animation-circle'>
