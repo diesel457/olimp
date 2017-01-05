@@ -33,10 +33,10 @@ class PreviewRoomList extends Component {
   }
 
 	_replaceString (string = '') {
-    if(string.length < 200){
+    if(string.length < 70){
       return string
     }else{
-      return string.slice(0, 200) + '...'
+      return string.slice(0, 70) + '...'
     }
 	}
 
