@@ -33,7 +33,7 @@ class Room extends Component {
         <div className='Room-right'>
           {model.get('_session.isAdmin') && <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit</a>}
           <div className='Room-title'>{data.title}</div>
-          <div className='Room-description'>{data.description}</div>
+          <div className='Room-description'>{this._replaceString(data.description)}</div>
           <div className='Room-price'>{data.price} руб./сутки</div>
           <button className='Room-btn' onClick={this._toggleState.bind(this)}>Забронировать</button>
         </div>
@@ -52,6 +52,14 @@ class Room extends Component {
   _changeActiveImage (index) {
     this.setState({activeImage: index})
   }
+
+	_replaceString (string = '') {
+    if(string.length < 200){
+      return string
+    }else{
+      return string.slice(0, 200) + '...'
+    }
+	}
 
 }
 
