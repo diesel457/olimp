@@ -1,0 +1,7 @@
+{
+  "STAGE": "production",
+  "NODE_ENV": "production",
+  "PORT": 3000,
+  "BASE_URL": "http://olimpcrimea.ru",
+  "SESSION_SECRET": "174260657a5369h537eo571aoerw517a"
+}

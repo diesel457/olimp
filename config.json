@@ -3,9 +3,9 @@
   "APP_NAME": "Boilerplate",
   "NODE_ENV": "development",
   "PORT": 3000,
-  "BASE_URL": "olimpcrimea.ru",
+  "BASE_URL": "http://localhost:3000",
   "COPY_TO_ENV": ["NODE_ENV", "PORT", "MONGO_URL"],
-  "MONGO_URL": "mongodb://178.250.246.125/olimp",
+  "MONGO_URL": "mongodb://localhost:27017/olimp",
   "SESSION_SECRET": "114260657a5369h537eo572aoerw117an",
   "ADMINS": [],
   "PUBLIC": ["PUBLIC", "NODE_ENV", "STAGE", "APP", "BASE_URL"]
