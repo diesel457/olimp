@@ -106,6 +106,7 @@ router.post(`/api/weather`, wrap(async (req, res, next) => {
   let { woeid } = req.body
   YQL.exec("SELECT * FROM weather.forecast WHERE woeid=@woeid AND u='c'", { woeid: woeid }, (err, response) => {
     if(err){ return res.status(err.status) }
+    if(!response.query && !response.query.results) return res.status('Not have result.')
     return res.send(response.query.results)
   });
 }));

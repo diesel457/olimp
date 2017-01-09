@@ -15,19 +15,11 @@ class Room extends Component {
       activeImage: 0,
       isEdit: false,
       data: props.data,
-      isMoreText: data.description && data.description.length < 200 ? false : true,
+      isMoreText: data.description && data.description.length < 320 ? false : true,
       moreTextIsActive: false
     }
 
   }
-
-  // componentDidMount () {
-  //   let { data = {} } = this.props
-  //   console.log(data, 'Component Did mount')
-  //   if (data.description && data.description.length < 200){
-  //     this.setState({isMoreText: true})
-  //   }
-  // }
 
   render () {
     let { isPopup, isEdit, activeImage, isMoreText, data, moreTextIsActive } = this.state
@@ -46,11 +38,11 @@ class Room extends Component {
           </div>
 				</div>
         <div className='Room-right'>
-          {model.get('_session.isAdmin') && <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit</a>}
+          {model.get('_session.isAdmin') && <a className='Admin-edit' onClick={this._editCard.bind(this)}>Edit&nbsp;&darr;</a>}
           <div className='Room-title'>{data.title}</div>
           <div className='Room-description'>
             {this._replaceString(data.description, moreTextIsActive)}
-            {isMoreText && !moreTextIsActive && <a className='Room-showMore' onClick={this._showMoreText.bind(this)}>ещё...</a>}
+            {isMoreText && !moreTextIsActive && <a className='Room-showMore' onClick={this._showMoreText.bind(this)}>далее...</a>}
             {isMoreText && moreTextIsActive && <a className='Room-showMore' onClick={this._showMoreText.bind(this)}>скрыть...</a>}
           </div>
           <div className='Room-price'>{data.price} руб./сутки</div>
@@ -77,10 +69,10 @@ class Room extends Component {
   }
 
 	_replaceString (string = '', moreTextIsActive) {
-    if(string.length < 200 || moreTextIsActive){
+    if(string.length < 320 || moreTextIsActive){
       return string
     }else{
-      return string.slice(0, 200)
+      return string.slice(0, 320)
     }
 	}
 

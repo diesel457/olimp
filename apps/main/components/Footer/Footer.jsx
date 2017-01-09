@@ -11,15 +11,53 @@ class Footer extends Component {
   state = {
     weather: null,
     translatedConditions: [
-      "торнадо", "тропическая буря", "ураган", "сильные грозы",
-      "гроза", "дождь со снегом", "дождь со снегом", "дождь со снегом", "гололёд", "мелкий дождь",
-      "град", "ливень", "ливень", "снег с перерывами", "не значительный снег с ливнем", "метель", "снег",
-      "град", "дождь со снегом", "буря", "туман", "лёгкий туман", "густой туман", "сильный ветер", "ветер",
-      "холодно", "облачно", "ночью пасмурно", "днём пасмурно", "ночью переменная облачность",
-      "днём переменная облачность", "ясная ночь",, "солнечно", "ночью прояснения", "днём прояснения",
-      "дождь с градом", "жарко", "местами грозы", "в отдельных районах грозы", "в отдельных районах грозы",
-      "в отдельных районах ливни", "сильный снег", "в отдельных районах снег с пролевным дождём", "сильный снег",
-      "частиная облачность", "ливень с грозой", "ливень со снегом", "местами проливной дождь с грозой"
+			{name: "торнадо", icon: <Cloudy_Weather />},
+      {name: "тропическая буря", icon: <Cloudy_Weather />},
+      {name: "ураган", icon: <Cloudy_Weather />},
+      {name: "сильные грозы", icon: <Cloudy_Weather />},
+      {name: "гроза", icon: <Cloudy_Weather />},
+      {name: "дождь со снегом", icon: <Cloudy_Weather />},
+      {name: "дождь со снегом", icon: <Cloudy_Weather />},
+      {name: "гололёд", icon: <Cloudy_Weather />},
+      {name: "незначительный дождь", icon: <Cloudy_Weather />},
+      {name: "град", icon: <Cloudy_Weather />},
+      {name: "сильный дождь", icon: <Cloudy_Weather />},
+      {name: "сильный дождь", icon: <Cloudy_Weather />},
+      {name: "незначительный снег", icon: <Cloudy_Weather />},
+      {name: "не значительный снег с ливнем", icon: <Cloudy_Weather />},
+      {name: "метель", icon: <Cloudy_Weather />},
+      {name: "снег", icon: <Cloudy_Weather />},
+      {name: "град", icon: <Cloudy_Weather />},
+      {name: "дождь со снегом", icon: <Cloudy_Weather />},
+      {name: "буря", icon: <Cloudy_Weather />},
+      {name: "туман", icon: <Cloudy_Weather />},
+      {name: "незначительный туман", icon: <Cloudy_Weather />},
+      {name: "густой туман", icon: <Cloudy_Weather />},
+      {name: "сильный ветер", icon: <Cloudy_Weather />},
+      {name: "ветер", icon: <Cloudy_Weather />},
+      {name: "холодно", icon: <Cloudy_Weather />},
+      {name: "облачно", icon: <Cloudy_Weather />},
+      {name: "ночью пасмурно", icon: <Cloudy_Weather />},
+      {name: "днём пасмурно", icon: <Cloudy_Weather />},
+      {name: "ночью переменная облачность", icon: <Cloudy_Weather />},
+      {name: "днём переменная облачность", icon: <Cloudy_Weather />},
+      {name: "ясная ночь", icon: <Cloudy_Weather />},
+      {name: "солнечно", icon: <Cloudy_Weather />},
+      {name: "ночью прояснения", icon: <Cloudy_Weather />},
+      {name: "днём прояснения", icon: <Cloudy_Weather />},
+      {name: "дождь с градом", icon: <Cloudy_Weather />},
+      {name: "жарко", icon: <Cloudy_Weather />},
+      {name: "местами грозы", icon: <Cloudy_Weather />},
+      {name: "в отдельных районах грозы", icon: <Cloudy_Weather />},
+      {name: "в отдельных районах грозы", icon: <Cloudy_Weather />},
+      {name: "в отдельных районах проливной дождь", icon: <Cloudy_Weather />},
+      {name: "сильный снег", icon: <Cloudy_Weather />},
+      {name: "в отдельных районах снег с проливным дождём", icon: <Cloudy_Weather />},
+      {name: "сильный снег", icon: <Cloudy_Weather />},
+      {name: "частиная облачность", icon: <Cloudy_Weather />},
+      {name: "ливень с грозой", icon: <Cloudy_Weather />},
+      {name: "ливень со снегом", icon: <Cloudy_Weather />},
+      {name: "местами проливной дождь с грозой", icon: <Cloudy_Weather />}
     ]
   }
 
@@ -56,11 +94,11 @@ class Footer extends Component {
           <h2>Погода</h2>
           <div className='Footer-item-description'>Севастополь, Любимовка</div>
           <div className='Footer-weather'>
-            {weather && <Cloudy_Weather />}
-            <span className='Footer-weather-temp'>{weather && weather.temp}</span>
+            {weather && translatedConditions[weather.code].icon}
+            {weather && <span className='Footer-weather-temp'>{weather.temp}</span>}
             <span className='Footer-weather-cel'>
               {weather && '°' + weather.unit}
-              <span className='Footer-weather-cond'>{weather && translatedConditions[weather.code] || 'Получаем метеоданные ...'}</span>
+              <span className='Footer-weather-cond'>{weather && translatedConditions[weather.code].name || 'Получаем метеоданные ...'}</span>
             </span>
           </div>
         </div>

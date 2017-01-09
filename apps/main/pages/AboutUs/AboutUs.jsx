@@ -30,7 +30,7 @@ class AboutUs extends Component {
         <Header path={this.props.route.path} />
         <div className='Content'>
           <div className='AboutUs-inner'>
-            {!isEdit && <a className='Admin-edit' onClick={this._goEdit.bind(this)}>Edit</a>}
+            {!isEdit && <a className='Admin-edit' onClick={this._goEdit.bind(this)}>Edit&nbsp;&darr;</a>}
             <div ref='htmlRender' className={!isEdit ? 'AboutUs-html' : 'AboutUs-html -hide'}></div>
             <div className={isEdit ? 'AboutUs-editBox' : 'AboutUs-editBox -hide'}>
               <textarea ref='edit'

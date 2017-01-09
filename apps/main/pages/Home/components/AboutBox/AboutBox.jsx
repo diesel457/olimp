@@ -20,16 +20,15 @@ class AboutBox extends Component {
     super()
     this.state = {
       isEdit: false,
-      isAdmin: model.get('_session.isAdmin') || false
+      isAdmin: model.get('_session.isAdmin') || false,
+      homeAd: props.homeAd[0]
     }
 
   }
 
   render () {
-    let {isEdit, isAdmin} = this.state
-    let { homeAd } = this.props
-    let ad = homeAd[0]
-    let paragraphs = ad.paragraphs || []
+    let {isEdit, isAdmin, homeAd} = this.state
+    let paragraphs = homeAd.paragraphs || []
     let content = paragraphs.map((p, index) => {
       return(<p key={index}>{p}</p>)
     })
@@ -37,13 +36,13 @@ class AboutBox extends Component {
     return (
       <div className='AboutBox'>
 				<div id='spinner' className='AboutBox-spinner'>
-          {isAdmin && <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit</a>}
-          <h2 ref='title'>{ad.title}</h2>
-          <div className='AboutBox-description-first' ref='descriptionFirst'>{ad.subTitle}</div>
+          {isAdmin && <a className='Admin-edit' onClick={this._getEdit.bind(this)}>Edit&nbsp;&darr;</a>}
+          <h2 ref='title'>{homeAd.title}</h2>
+          <div className='AboutBox-description-first' ref='descriptionFirst'>{homeAd.subTitle}</div>
           <div className='AboutBox-description-second' ref='descriptionSecond'>
             {content}
           </div>
-          {isEdit && <button className='AboutBox-save' onClick={this._saveChanges.bind(this, ad.id)}>Сохранить</button>}
+          {isEdit && <button className='AboutBox-save' onClick={this._saveChanges.bind(this, homeAd.id)}>Сохранить</button>}
         </div>
         <div className='AboutBox-inner'>
           <h2>Доступно для каждого клиента, в каждом номере</h2>
@@ -92,10 +91,10 @@ class AboutBox extends Component {
     title.focus()
   }
 
-  _endEdit (){
-    for(key in this.refs){
-      let el = this.refs[key]
-      console.log(el)
+  _endEdit = () =>{
+    let _object = this.refs
+    for(key in _object){
+      let el = _object[key]
       el.setAttribute('contenteditable', false)
     }
   }
@@ -114,11 +113,12 @@ class AboutBox extends Component {
       subTitle: descriptionFirst.textContent,
       paragraphs: paragraphs
     }
+    console.log(homeAdId)
     if(!homeAdId) return
 
     model.set(`homeAd.${homeAdId}`, homeAdNewFields, () => {
       this.setState({isEdit: false})
-      this._endEdit()
+      this._endEdit.bind(this)
     })
   }
 
