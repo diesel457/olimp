@@ -4,60 +4,65 @@ import './Footer.styl'
 import VKIcon from 'icons/vk.svg'
 import InstIcon from 'icons/instagram.svg'
 import FBIcon from 'icons/fb.svg'
-import Cloudy_Weather from 'icons/cloudy_weather.svg'
+import Cloudy_Weather from 'icons/cloudy.svg'
+import Storm_Weather from 'icons/storm.svg'
+import Rain_Weather from 'icons/rain.svg'
+import RainWithStorm_Weather from 'icons/rainWithStorm.svg'
+import Snow_Weather from 'icons/snow.svg'
+import Sun_Weather from 'icons/sun.svg'
 
 class Footer extends Component {
 
   state = {
     weather: null,
     translatedConditions: [
-			{name: "торнадо", icon: <Cloudy_Weather />},
-      {name: "тропическая буря", icon: <Cloudy_Weather />},
-      {name: "ураган", icon: <Cloudy_Weather />},
-      {name: "сильные грозы", icon: <Cloudy_Weather />},
-      {name: "гроза", icon: <Cloudy_Weather />},
-      {name: "дождь со снегом", icon: <Cloudy_Weather />},
-      {name: "дождь со снегом", icon: <Cloudy_Weather />},
-      {name: "гололёд", icon: <Cloudy_Weather />},
-      {name: "незначительный дождь", icon: <Cloudy_Weather />},
-      {name: "град", icon: <Cloudy_Weather />},
-      {name: "сильный дождь", icon: <Cloudy_Weather />},
-      {name: "сильный дождь", icon: <Cloudy_Weather />},
-      {name: "незначительный снег", icon: <Cloudy_Weather />},
-      {name: "не значительный снег с ливнем", icon: <Cloudy_Weather />},
-      {name: "метель", icon: <Cloudy_Weather />},
-      {name: "снег", icon: <Cloudy_Weather />},
-      {name: "град", icon: <Cloudy_Weather />},
-      {name: "дождь со снегом", icon: <Cloudy_Weather />},
-      {name: "буря", icon: <Cloudy_Weather />},
+			{name: "торнадо", icon: <Storm_Weather />},
+      {name: "тропическая буря", icon: <Storm_Weather />},
+      {name: "ураган", icon: <Storm_Weather />},
+      {name: "сильные грозы", icon: <Storm_Weather />},
+      {name: "гроза", icon: <Storm_Weather />},
+      {name: "дождь со снегом", icon: <Snow_Weather />},
+      {name: "дождь со снегом", icon: <Snow_Weather />},
+      {name: "гололёд", icon: <Snow_Weather />},
+      {name: "незначительный дождь", icon: <Snow_Weather />},
+      {name: "град", icon: <Snow_Weather />},
+      {name: "сильный дождь", icon: <Rain_Weather />},
+      {name: "сильный дождь", icon: <Rain_Weather />},
+      {name: "незначительный снег", icon: <Snow_Weather />},
+      {name: "не значительный снег с ливнем", icon: <Rain_Weather />},
+      {name: "метель", icon: <Rain_Weather />},
+      {name: "снег", icon: <Snow_Weather />},
+      {name: "град", icon: <Storm_Weather />},
+      {name: "дождь со снегом", icon: <Storm_Weather />},
+      {name: "буря", icon: <Snow_Weather />},
       {name: "туман", icon: <Cloudy_Weather />},
       {name: "незначительный туман", icon: <Cloudy_Weather />},
       {name: "густой туман", icon: <Cloudy_Weather />},
-      {name: "сильный ветер", icon: <Cloudy_Weather />},
-      {name: "ветер", icon: <Cloudy_Weather />},
-      {name: "холодно", icon: <Cloudy_Weather />},
+      {name: "сильный ветер", icon: <Sun_Weather />},
+      {name: "ветер", icon: <Sun_Weather />},
+      {name: "холодно", icon: <Snow_Weather />},
       {name: "облачно", icon: <Cloudy_Weather />},
-      {name: "ночью пасмурно", icon: <Cloudy_Weather />},
-      {name: "днём пасмурно", icon: <Cloudy_Weather />},
+      {name: "ночью пасмурно", icon: <RainWithStorm_Weather />},
+      {name: "днём пасмурно", icon: <RainWithStorm_Weather />},
       {name: "ночью переменная облачность", icon: <Cloudy_Weather />},
       {name: "днём переменная облачность", icon: <Cloudy_Weather />},
       {name: "ясная ночь", icon: <Cloudy_Weather />},
-      {name: "солнечно", icon: <Cloudy_Weather />},
+      {name: "солнечно", icon: <Sun_Weather />},
       {name: "ночью прояснения", icon: <Cloudy_Weather />},
-      {name: "днём прояснения", icon: <Cloudy_Weather />},
-      {name: "дождь с градом", icon: <Cloudy_Weather />},
-      {name: "жарко", icon: <Cloudy_Weather />},
-      {name: "местами грозы", icon: <Cloudy_Weather />},
-      {name: "в отдельных районах грозы", icon: <Cloudy_Weather />},
-      {name: "в отдельных районах грозы", icon: <Cloudy_Weather />},
-      {name: "в отдельных районах проливной дождь", icon: <Cloudy_Weather />},
-      {name: "сильный снег", icon: <Cloudy_Weather />},
-      {name: "в отдельных районах снег с проливным дождём", icon: <Cloudy_Weather />},
-      {name: "сильный снег", icon: <Cloudy_Weather />},
+      {name: "днём прояснения", icon: <Sun_Weather />},
+      {name: "дождь с градом", icon: <Storm_Weather />},
+      {name: "жарко", icon: <Sun_Weather />},
+      {name: "местами грозы", icon: <RainWithStorm_Weather />},
+      {name: "в отдельных районах грозы", icon: <RainWithStorm_Weather />},
+      {name: "в отдельных районах грозы", icon: <RainWithStorm_Weather />},
+      {name: "в отдельных районах проливной дождь", icon: <Rain_Weather />},
+      {name: "сильный снег", icon: <Snow_Weather />},
+      {name: "в отдельных районах снег с проливным дождём", icon: <Snow_Weather />},
+      {name: "сильный снег", icon: <Snow_Weather />},
       {name: "частиная облачность", icon: <Cloudy_Weather />},
-      {name: "ливень с грозой", icon: <Cloudy_Weather />},
-      {name: "ливень со снегом", icon: <Cloudy_Weather />},
-      {name: "местами проливной дождь с грозой", icon: <Cloudy_Weather />}
+      {name: "ливень с грозой", icon: <RainWithStorm_Weather />},
+      {name: "ливень со снегом", icon: <Snow_Weather />},
+      {name: "местами проливной дождь с грозой", icon: <RainWithStorm_Weather />}
     ]
   }
 

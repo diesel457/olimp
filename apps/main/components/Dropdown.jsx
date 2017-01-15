@@ -75,7 +75,9 @@ class Dropdown extends Component {
     let _currentSelect = options[index]
 
     selected.textContent = _currentSelect.option
-    this.props.change(_currentSelect.value)
+
+    if(!!this.props.change) this.props.change(_currentSelect.value)
+    if(!!this.props.getNameValue) this.props.getNameValue(_currentSelect.option)
 
     this._toggleDrop()
   }

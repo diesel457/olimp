@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Footer, Header, Popup } from './../../components'
+import { Footer, Header, Popup, TopAdmin } from './../../components'
 import './Home.styl'
 import { Slider, AboutBox, GalleryPreview, PreviewRoomList, Booking } from './components'
 
@@ -13,6 +13,7 @@ class Home extends Component {
 		let { isPopup, selectedValue } = this.state
     return (
       <div className='Home'>
+				<TopAdmin />
 				{ isPopup && <Popup toggleState={this.toggleState} title='Бронирование номеров'><Booking /></Popup> }
         <Header path={this.props.route.path} />
 				<div className='Content'>

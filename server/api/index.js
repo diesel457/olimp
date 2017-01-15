@@ -6,6 +6,10 @@ import fs from 'fs'
 import path from 'path'
 import passport from 'passport'
 import bcrypt from 'bcrypt-nodejs'
+let api_key = 'key-58092896fc45f3742e9b0395582b7abc';
+// let api_key = 'key-58092896fc45f3742e9b0395582b7abc';
+let domain = 'sandbox38b56b4e66624b99890801bcad84e1bd.mailgun.org';
+let mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 const router = express.Router()
 const loginOptions = {
@@ -87,7 +91,7 @@ router.get(`/api/create-home-info`, wrap(async (req, res, next) => {
   });
 }));
 
-router.post(`/api/hello`, wrap(async (req, res, next) => {
+router.post(`/api/send-email`, wrap(async (req, res, next) => {
   let data = {
     from: 'Excited User <sash19852006@yandex.ru>',
     to: '<dimarakov21@gmail.com>',
