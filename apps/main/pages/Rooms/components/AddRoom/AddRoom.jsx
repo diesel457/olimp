@@ -149,7 +149,7 @@ class AddRoom extends Component {
       description: description.value,
       showHome: homeCheck.checked || false
     }
-    console.log(homeCheck.checked)
+
     if(homeCheck.checked){
       cardObject['toHome'] = true
     }
